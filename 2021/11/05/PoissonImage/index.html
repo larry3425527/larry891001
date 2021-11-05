@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Poisson Image Blending | La哩La渣</title><meta name="author" content="larry"><meta name="copyright" content="larry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本篇文章主要講解2004年Siggraph的經典paper：《Poisson Image Editing》，在圖像融合領域，融合效果最牛逼的paper。講這個算法，我沒打算講太多理論的公式，理論的東西，對於大部分數學比較差的人來說看了就頭暈。什麼散度、拉普拉斯算子、梯度場、泊松方程、泊松方程第一類邊界條件(Dirichlet boundary)、泊松方程第二類邊界條件(Neumann bounda">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Poisson Image Blending">
+<meta property="og:url" content="http://larry3425527.github.io/larry891001/2021/11/05/PoissonImage/index.html">
+<meta property="og:site_name" content="La哩La渣">
+<meta property="og:description" content="本篇文章主要講解2004年Siggraph的經典paper：《Poisson Image Editing》，在圖像融合領域，融合效果最牛逼的paper。講這個算法，我沒打算講太多理論的公式，理論的東西，對於大部分數學比較差的人來說看了就頭暈。什麼散度、拉普拉斯算子、梯度場、泊松方程、泊松方程第一類邊界條件(Dirichlet boundary)、泊松方程第二類邊界條件(Neumann bounda">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg">
+<meta property="article:published_time" content="2021-11-05T11:20:45.026Z">
+<meta property="article:modified_time" content="2021-11-05T12:49:59.267Z">
+<meta property="article:author" content="larry">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg"><link rel="shortcut icon" href="/larry891001/img/favicon.png"><link rel="canonical" href="http://larry3425527.github.io/larry891001/2021/11/05/PoissonImage/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/larry891001/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/larry891001/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Poisson Image Blending',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-11-05 04:49:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><script src="/live2d-widget/autoload.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://img.ruten.com.tw/s1/d/5a/27/21644218247719_383.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/tags/"><div class="headline">Tags</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/larry891001/">La哩La渣</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Poisson Image Blending</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-11-05T11:20:45.026Z" title="Created 2021-11-05 03:20:45">2021-11-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-11-05T12:49:59.267Z" title="Updated 2021-11-05 04:49:59">2021-11-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/larry891001/categories/OpenCV/">OpenCV</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Poisson Image Blending"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note modern"><p>本篇文章主要講解2004年Siggraph的經典paper：《Poisson Image Editing》，在圖像融合領域，融合效果最牛逼的paper。講這個算法，我沒打算講太多理論的公式，理論的東西，對於大部分數學比較差的人來說看了就頭暈。什麼散度、拉普拉斯算子、梯度場、泊松方程、泊松方程第一類邊界條件(Dirichlet boundary)、泊松方程第二類邊界條件(Neumann boundary)，如果把這些公式貼上來，估計很多人還沒看到算法是怎麼實現的，就已經看不下去了。因此我將直接給出離散形式實現方法，算法流程。</p>
+<p>開始這個算法前，我需要先講解一個數學問題：</p>
+<ol>
+<li><p>散度計算:</p>
+<ul>
+<li>什麼是散度和梯度?<ul>
+<li>梯度：運算對像是標量，計算結果是向量<br>計算梯度時會在每個位置都計算出一個向量，這個向量的方向是當前位置周圍的標量值最小點指向標量值最大點（這個周圍其實是極其接近的，相當於取極限），而向量的大小就是上面最小標量與最大標量的差距。想像給山求梯度，山上每個點都有一個向量，每個向量都指向最陡的方向，向量大小代表這個最陡的方向有多陡。</li>
+<li>散度：運算對像是向量，計算結果是標量<br>散度考察向量場中任何一個點及其周圍極小極小的一塊區域，在該點上，這個極小區域向量場的發散程度。<br>【其實梯度和散度都是一種基於 local 的量，考察的都是任何一點及其周圍很小很小的一個範圍】<br>散度是作用在向量場的一個算子，通過對一個向量場計算散度，能夠得到一個標量場，也就是說，在向量空間中每一點的散度都是一個標量。<br>散度表徵的是向量場的發散程度<br>散度 &gt; 0，表明向量場向外發散<br>散度 = 0，表明向量場內外平衡<br>散度 &lt; 0，表明向量場向內聚集</li>
+</ul>
+</li>
+<li>散度計算<br>現在假設一幅圖像為3*3的單通道灰度圖像：<br><img src="data:image/png;base64,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" alt="3X3Image"></li>
+</ul>
+<p> 我們假設每一點的像素值為V，V(1)表示像素點1的值，那麼我們可以定義像素點5的散度的計算公式為：<br> div(5)=[V(2)+V(4)+V(6)+V(8)]-4*V(5)<br> 說白了就是通過拉普拉斯卷積核，進行卷積，就可以求解散度了。<br> <img src="https://lh3.googleusercontent.com/7HV_0XjZrnUhApKxHqvSIaPfQJoVNQ4ibKLvvjI6PCDCOm2Goirs5GQzOdxUAyfh2OLI=s107" alt="Result"><br> 當然正規的過程應該是先求解像素點5的梯度值，然後在對梯度求導，這樣就能得到散度，不過得到的結果其實就是上面的計算公式。</p>
+</li>
+<li><p>柏松重建<br> 如果給定每個像素點的散度，我要你求解每個像素點的值，要怎麼求取。這便是泊松方程的靈魂了。為了更好的理解重建過程，我現在假設圖像的大小是4*4的16個像素點圖片，如下：<br> <img src="data:image/png;base64,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" alt="4X4Image"></p>
+<p> 假設我給你像素點6、7、10、11的散度值div(6)、div(7)、div(10)、div(11)，那麼我們是不是可以列出如下4個方程：</p>
+<p> [V(2)+V(5)+V(7)+V(10)]-4*V(6)=div(6)</p>
+<p> [V(3)+V(6)+V(8)+V(11)]-4*V(7)=div(7)</p>
+<p> [V(6)+V(9)+V(11)+V(14)]-4*V(10)=div(10)</p>
+<p> [V(7)+V(10)+V(12)+V(15)]-4*V(11)=div(11)</p>
+<p> 這個時候，如果我們只有四個方程，可是裡面有16個像素點，也就是說有16個未知數。因此單單靠上面的4個方程，就想把所有的像素值求解出來是不可能的，這樣方程有無數多個解。因此我們需要添加約束方程，這個便是泊松重建方程的約束條件了。假設我們添加邊界約束條件，也就是說如果我已經知道了上面那副圖像最外圍一圈的每個像素點的值u，這樣我們就可以得到12個約束方程。即：</p>
+<p> V(1)=u(1)                V(2)=u(2)     V(3)=u(3)</p>
+<p> V(4)=u(4)                V(5)=u(5)      V(8)=u(8)</p>
+<p> V(9)=u(9)             V(12)=u(12)      V(13)=u(13)</p>
+<p> V(14)=u(14)           V(15)=u(15)V(16)=u(16)</p>
+<p> 上面有12個方程，外加給定的散度4個方程，這樣我們有16個方程。這樣就可以求解方程組了，這樣就能實現通過散度+邊界約束條件，實現圖像重建。這個便是泊松方程的主要過程。<br> 因此泊松融合，說的再簡單一點，就是構建方程組：</p>
+<pre><code> Ax=b
+</code></pre>
+</li>
+<li><p>泊松圖像融合<br> 泊松重建，其實就是求解方程組：</p>
+<pre><code> Ax=b
+</code></pre>
+<p> 算法的整個過程在於求解係數稀疏矩陣A、及b。只要A、b求出來了，那麼我們就可以求解方程組得到x，而x就是我們得到的融合結果的像素顏色值。<br> 因此當時我想當然的以為，b的求解直接用拉普拉斯卷積核對源圖像的興趣區域(ROI)，進行卷積就可以得到散度b的值，因為對於給定的一幅圖像散度其實就是通過拉普拉斯卷積核進行卷積，得到的結果，就是每個像素點的散度。這種思路本沒有錯，然而這樣會出現邊界過渡不自然的現象。<br> 而正確的思路應該是：求解ROI的梯度場Isrc，及背景圖像不被修改的像素區域的梯度場Idst。然後通過Isrc+Idst得到整幅待重建圖像的梯度場，最後才根據梯度場求解散度。所以千萬不要偷懶，不要一步求解散度，要先把待重建圖像的梯度場求好，再進行求解散度。</p>
+</li>
+<li><p>範例及程式碼<br> 先給定一張圖g<br> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIMAAACXCAMAAAABBBjZAAABDlBMVEX///+Hz//m9P+Ry++kw9Kbx+Hs9//5/P+Q0v/z+f/Y7v+r3P/u7uuXyOa74v+MzffR6/+i2P/f8f/D5f/b29bK6P/k5OD4+PerwMiY1f+exduWyeiz3//q6uem2v+lw9AAAAD/++nD1N3T083Y4ub+89y+nXdOQWB8iXVVNVWFveP/99WiYDEMRY/L8fz///fZnVUAAEjhqGIMACxos+T//+WzZygAAGGo4voAAEDz0JVODB1Bfrrm+/7AhVMsVXWKhG13pMv75rp+QV7HhDwAABmds8nTmGlPXFAzDACocWjQtJZvQB0MV6j+5a1hESMARp3Z/f9wHVx/QTpekbfizLWWaGHQuaqdkYuLi5e3sjrsAAAFfUlEQVR4nO2beZ+aRhjHQRlBdERWBMTdJVt7ZdPW7ZE26ZUmTdL7vt//G+kcgKDgHMzAp/3w+4N1UZyvz/ye4WEYDGPQoEH/M03chb+ZYa2Wo4tRDwAL0zGr8leTThHcY4AMo7toLOsJsGbdEEz8RgKkTRehWJ8jwFrZmglWZ4OQuUKvNy/ZBEjOhT4Ce8OFgLTRFYpJczqcSg/EhQCBJghXDEEHxITbC9ogGgbnLiGEO4JorRJhIYVgmurGiSnH2FgvZ6qGwJ7JEiD5ShAk8qGslQKEUSsCU4Ullm0RTKdtPSGbDxW1GyUEzxAN2rRCkBkba9RiqJIbG+skPUqslCFIF9tK7JhLKkFtpQimI4EwUUqAGMTL/aliBInU4C+fuSV8Am1zomzSQgyBeTEnJaFAqPZjJpFA2IoG6BMJBELh8FgVvy3Vp2Uh7pJKR07k4mWQLqE55PIhtC4fz4mzmNHZFZxVnUZHYnGNEdoSMxMPg67xKRNPGaGugmwQR2bodSTSJRNB09mqLGY9peekXdGy967gmAvQOU7nYnVGFwys4rYLBlYp04EfmIHQPkRhMVyp+AKvQQxDaK0ecrHmhrpwJausbD8FxtY1g0FzDUPEPIF30BnMSZkOOoMZhy4yg3XK6IKBOXHbAQNzTuZaPwOzwu+glmImRgcjBLvC13yJgcUsKvnuqrcScyJCzf2Cs2o0ZZi/0F9ENF3pRJhhfgiEA0Grdjyv+b2mUiqMjCgIyEv8MQjTVgwgHgsz0DBQBupK0C4OqTgDCkPB4KpgsM4w1M8JkTDkDHSI0MhQ70kSBsQQhWEwp5mRM3gJhAkxmAcgAOAoyADAZJy/m8b0iARAxOBZFnpZhSH7XgnmtFXUWlQNgzHfob/Rbu6WGLzUyzYm3gAwrhje2qJ3ScsW2ZDPjfE+tBnHAL+qjLx4nxvtcHOYJNpFlTAgBvJPMCkxJOQPSNDRuBWyOWhr5ZgmAcGA0Mr7Ypya5rE78b6RgVumPR+ElTBke692pKrMGGiOjeN6huRgmsTa0h9sgYKhoCkxWJgBhyAM6S+uhCFjQNEYlRi8nMHE/Z5U3WDB8rfHxDd0H5shCK6QKEkRhkMccGacxMEEEMIjt1uV5PEA7hV2HKgVguLsUApDxoDJ3IMfyK+ifijcWHwroF2DjDkm+wCkn6UuKDEUR6B9PmW4or1AGy945tgq1Kl+kRe4ZYe4LonjlAQaxPnPd4jhgJe3B0hKoH+3cYXhcMSBwdjhzVVUCYMxn1/lGfsqTFNIQuChZMeNmFtgOuOtleAGtkX40VhAPOLFKeqrbbYvQZ/zvCRG3wCxS4oj8L4N6m7cShQGYXgUhopOL3ZSL+/PlqopH6LTXVgnkzIJ+SkQnn6poPjXZJxe7UAUbNAeQeTet67ZKZGbjLpmjoWWx+i5mSG2akvL3VbRpc86HCG6WkrDpYb4yhjlM0OO+Hot5TMizCvNGil2BPtWkvZA+HIL8ZU6QqYnDHVL5rCkegJL3dyQNIK6wbLNolZFgZD0QiYF+elsWq5xtlvnxkLBwzHtZocWah4Sko+Ev1S00lzWmM610uek7BV/jjqzxQY/wqcsAge5HNPpa3ek+eGsqe0u6pdWOqbjXy51t1/IHi1Rses4qG8cf3a5Xl+M7GkPD04a0xGRhh4fNGjQoEEq9drrb7x5/7ZXhAdvvf3O/u7eu+P+EPbvvf8B3fSnhx9+9AhtHns9MuzvEMPHn3z6WY8MxsPPn3xx/2mvCMazLx/12j7SzfMXT172UcKVGb76+pt7j592VcXW6cG3t8bNd9/3Ojrc/YDd+ONPPQ4P+7uff8EMv/bpy2e//e7u//jztk8/GDd//f3PS84HSwYNGvTf1L/MsWLKU/vtVgAAAABJRU5ErkJggg==" alt="g"></p>
+<p> 還有一張背景圖S</p>
+ <img src = "https://lh3.googleusercontent.com/_8cwtqcnyDu7BOgV7hvOFNWDllkeidfuY_krcUHW1TLHCGtVz36Haq7cayUtrUggraGs=s85" height="150px" width="150px">
+
+<p> 目標:將g黏貼到S中，並呈現自然的效果</p>
+ <img src = "https://lh3.googleusercontent.com/uo-ncesG9m6PwJyWEon4kwMvB146cHObQ4WBcMRHSAMbK8XTzF_08VRkXnXgJP7W7dmr=s86" height="150px" width="150px">
+ 
+ 步驟1、計算圖像g的梯度場
+
+<p> 步驟2、計算背景圖片的梯度場</p>
+<p> 步驟3、計算融合圖像的梯度場</p>
+<p> 步驟4、求解融合圖像的散度</p>
+<p> 步驟5、求解係數矩陣</p>
+</li>
+</ol>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">larry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://larry3425527.github.io/larry891001/2021/11/05/PoissonImage/">http://larry3425527.github.io/larry891001/2021/11/05/PoissonImage/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/larry891001/2021/10/23/HistogramMatching/"><img class="next-cover" src="https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg" onerror="onerror=null;src='/larry891001/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">直方圖匹配 Histogram Matching</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="fb-comments" data-colorscheme="light" data-numposts="10" data-order-by="social" data-width="100%"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://img.ruten.com.tw/s1/d/5a/27/21644218247719_383.jpg" onerror="this.onerror=null;this.src='/larry891001/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">larry</div><div class="author-info__description">人間失格-太宰治</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/larry891001/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/larry891001/tags/"><div class="headline">Tags</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/larry891001/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/larry3425527"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2021/11/05/PoissonImage/" title="Poisson Image Blending"><img src="https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="Poisson Image Blending"/></a><div class="content"><a class="title" href="/larry891001/2021/11/05/PoissonImage/" title="Poisson Image Blending">Poisson Image Blending</a><time datetime="2021-11-05T11:20:45.026Z" title="Created 2021-11-05 03:20:45">2021-11-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2021/10/23/HistogramMatching/" title="直方圖匹配 Histogram Matching"><img src="https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="直方圖匹配 Histogram Matching"/></a><div class="content"><a class="title" href="/larry891001/2021/10/23/HistogramMatching/" title="直方圖匹配 Histogram Matching">直方圖匹配 Histogram Matching</a><time datetime="2021-10-23T12:57:27.999Z" title="Created 2021-10-23 04:57:27">2021-10-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2021/10/15/HE/" title="灰階直方圖均化 Histogram Equalization"><img src="https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="灰階直方圖均化 Histogram Equalization"/></a><div class="content"><a class="title" href="/larry891001/2021/10/15/HE/" title="灰階直方圖均化 Histogram Equalization">灰階直方圖均化 Histogram Equalization</a><time datetime="2021-10-15T13:34:22.981Z" title="Created 2021-10-15 05:34:22">2021-10-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2021/10/15/OpenCvAdjust/" title="OpenCV亮度與對比度的調整"><img src="https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="OpenCV亮度與對比度的調整"/></a><div class="content"><a class="title" href="/larry891001/2021/10/15/OpenCvAdjust/" title="OpenCV亮度與對比度的調整">OpenCV亮度與對比度的調整</a><time datetime="2021-10-15T13:28:42.257Z" title="Created 2021-10-15 05:28:42">2021-10-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2021/10/09/Yolov4/" title="YOLOv4: Optimal Speed and Accuracy of Object Detection"><img src="https://miro.medium.com/max/3840/1*meBq05Fa5VGS3hcGnJx2-Q.jpeg" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="YOLOv4: Optimal Speed and Accuracy of Object Detection"/></a><div class="content"><a class="title" href="/larry891001/2021/10/09/Yolov4/" title="YOLOv4: Optimal Speed and Accuracy of Object Detection">YOLOv4: Optimal Speed and Accuracy of Object Detection</a><time datetime="2021-10-10T07:29:39.944Z" title="Created 2021-10-09 23:29:39">2021-10-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By larry</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/larry891001/js/utils.js"></script><script src="/larry891001/js/main.js"></script><div class="js-pjax"><div id="fb-root"></div><script>function loadFBComment () {
+  var themeNow = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+  document.getElementsByClassName('fb-comments')[0].setAttribute('data-colorscheme',themeNow)
+
+  if (typeof FB === 'object') FB.XFBML.parse()
+  else {
+    let ele = document.createElement('script')
+    ele.setAttribute('src','https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v9.0')
+    ele.setAttribute('async', 'true')
+    ele.setAttribute('defer', 'true')
+    ele.setAttribute('crossorigin', 'anonymous')
+    document.getElementById('fb-root').insertAdjacentElement('afterbegin',ele)
+  }   
+}
+
+if ('Facebook Comments' === 'Facebook Comments' || !false) {
+  if (false) btf.loadComment(document.querySelector('#post-comment .fb-comments'), loadFBComment)
+  else loadFBComment()
+} else {
+  function loadOtherComment () {
+    loadFBComment()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'LarryCommunity/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (false) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
