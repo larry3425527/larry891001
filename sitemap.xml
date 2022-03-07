@@ -299,20 +299,6 @@
 
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Google-map-API/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/contest/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lalilaza.org/larry891001/tags/%E5%8B%95%E6%BC%AB/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -321,6 +307,20 @@
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/%E8%83%83%E7%97%9B/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/Google-map-API/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/contest/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
