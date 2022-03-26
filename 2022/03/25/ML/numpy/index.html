@@ -1,0 +1,434 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numpy | La哩La渣</title><meta name="keywords" content="Data preprocessing,Machine Learning,numpy"><meta name="author" content="larry"><meta name="copyright" content="larry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="此為上課筆記   Numpy的基礎 Numpy是在科學計算裡面最常用的基本函示庫之一。 除了具有能處理多維陣列等優秀的功能外，以C語言而非Python撰寫而成的模組，處理速度快  陣列操作12import numpy as np  data &#x3D; np.array([1,2,3,4,5,6,7,8,9])   array([ 1, 2, 3, 4, 5, 6, 7, 8, 9])   資料型別 使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Numpy">
+<meta property="og:url" content="https://www.lalilaza.org/larry891001/2022/03/25/ML/numpy/index.html">
+<meta property="og:site_name" content="La哩La渣">
+<meta property="og:description" content="此為上課筆記   Numpy的基礎 Numpy是在科學計算裡面最常用的基本函示庫之一。 除了具有能處理多維陣列等優秀的功能外，以C語言而非Python撰寫而成的模組，處理速度快  陣列操作12import numpy as np  data &#x3D; np.array([1,2,3,4,5,6,7,8,9])   array([ 1, 2, 3, 4, 5, 6, 7, 8, 9])   資料型別 使用">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg">
+<meta property="article:published_time" content="2022-03-26T07:23:00.030Z">
+<meta property="article:modified_time" content="2022-03-26T08:31:51.087Z">
+<meta property="article:author" content="larry">
+<meta property="article:tag" content="Data preprocessing">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="numpy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg"><link rel="shortcut icon" href="/larry891001/img/favicon.png"><link rel="canonical" href="https://www.lalilaza.org/larry891001/2022/03/25/ML/numpy/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/larry891001/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/larry891001/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Numpy',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-26 00:31:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><script src="/live2d-widget/autoload.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://img.ruten.com.tw/s1/d/5a/27/21644218247719_383.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/tags/"><div class="headline">Tags</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/larry891001/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/larry891001/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/larry891001/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/larry891001/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/larry891001/">La哩La渣</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/larry891001/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/larry891001/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/larry891001/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/larry891001/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Numpy</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-03-26T07:23:00.030Z" title="Created 2022-03-25 23:23:00">2022-03-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-03-26T08:31:51.087Z" title="Updated 2022-03-26 00:31:51">2022-03-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/larry891001/categories/Data-Preprocessing/">Data Preprocessing</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Numpy"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note danger simple"><p>此為上課筆記</p>
+</div>
+
+<h2 id="Numpy的基礎"><a href="#Numpy的基礎" class="headerlink" title="Numpy的基礎"></a>Numpy的基礎</h2><ul>
+<li>Numpy是在科學計算裡面最常用的基本函示庫之一。</li>
+<li>除了具有能處理多維陣列等優秀的功能外，以C語言而非Python撰寫而成的模組，處理速度快</li>
+</ul>
+<h2 id="陣列操作"><a href="#陣列操作" class="headerlink" title="陣列操作"></a>陣列操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np  </span><br><span class="line">data = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>])  </span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>array([ 1, 2, 3, 4, 5, 6, 7, 8, 9])</p>
+</div>
+
+<h2 id="資料型別"><a href="#資料型別" class="headerlink" title="資料型別"></a>資料型別</h2><ul>
+<li>使用Numpy處理資料時，為了能進行高速運算，並確保計算時值的精度，有著資料的「型別」(type)。</li>
+<li>資料型別是指「整數」與「浮點數」等值的種類。<table>
+<thead>
+<tr>
+<th align="left">資料型別</th>
+<th align="left">概述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">(u)int8</td>
+<td align="left">(不)具有正負號的8位元整數</td>
+</tr>
+<tr>
+<td align="left">(u)int16</td>
+<td align="left">(不)具有正負號的16位元整數</td>
+</tr>
+<tr>
+<td align="left">(u)int32</td>
+<td align="left">(不)具有正負號的32位元整數</td>
+</tr>
+<tr>
+<td align="left">(u)int64</td>
+<td align="left">(不)具有正負號的64位元整數</td>
+</tr>
+<tr>
+<td align="left">float16</td>
+<td align="left">16位元的浮點數</td>
+</tr>
+<tr>
+<td align="left">float32</td>
+<td align="left">32位元的浮點數</td>
+</tr>
+<tr>
+<td align="left">float64</td>
+<td align="left">64位元的浮點數</td>
+</tr>
+<tr>
+<td align="left">bool</td>
+<td align="left">表現True or False</td>
+</tr>
+</tbody></table>
+</li>
+<li>若是要查詢資料型別，可以在變數的後方指定「.dtype」</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np  </span><br><span class="line">data = np.array([<span class="number">9</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">10</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">5</span>])</span><br><span class="line">data.dtype    </span><br></pre></td></tr></table></figure>
+
+<div class="note flat"><p>dtype(‘int64’)</p>
+</div>
+
+<h2 id="資料型別-1"><a href="#資料型別-1" class="headerlink" title="資料型別"></a>資料型別</h2><ul>
+<li>維度: <code>ndim</code></li>
+<li>元素數量: <code>size</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np  </span><br><span class="line">data = np.array([<span class="number">9</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">10</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;維度&#x27;</span>,data.ndim)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;元素數量&#x27;</span>,data.size)   </span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>維度 1<br>元素數量 10</p>
+</div>
+
+<h2 id="對所有元素進行運算"><a href="#對所有元素進行運算" class="headerlink" title="對所有元素進行運算"></a>對所有元素進行運算</h2><ul>
+<li>Python中要對陣列的元素進行計算必須用「for迴圈」</li>
+<li>Numpy可以直接對陣列進行運算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data1 = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">9</span>])</span><br><span class="line">data2 = np.array([<span class="number">10</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;data*2&#x27;</span> , data*<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;乘法運算：&#x27;</span>,data1*data2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;連乘：&#x27;</span>,data**<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;除法：&#x27;</span>,data1/data2)</span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>data*2 [18  4  6  8 20 12 14 16  2 10]<br>乘法運算： [10 18 24 28 30 30 28 24 18  9]<br>連乘： [ 81   4   9  16 100  36  49  64   1  25]<br>除法： [0.1        0.22222222 0.375      0.57142857 0.83333333 1.2<br> 1.75       2.66666667 4.5        9.        ]
+ </p>
+</div>
+
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><ul>
+<li>使用sort，預設是小到大</li>
+<li>大到小，可用data[::-1].sort()的方式，使用切割進行操作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#array值排序</span></span><br><span class="line"><span class="comment">#輸入程式碼</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data = np.array([<span class="number">9</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">10</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line">data.sort()</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line">data[::-<span class="number">1</span>].sort()</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>[ 1  2  3  4  5  6  7  8  9 10]<br>[ 1  2  3  4  5  6  7  8  9 10]<br>[10  9  8  7  6  5  4  3  2  1]
+ </p>
+</div>
+
+<h2 id="最小、最大、總和、累積的計算"><a href="#最小、最大、總和、累積的計算" class="headerlink" title="最小、最大、總和、累積的計算"></a>最小、最大、總和、累積的計算</h2><ul>
+<li>Numpy的array資料可以藉由呼叫</li>
+<li>min:最小值</li>
+<li>max:最大值</li>
+<li>sum:總和</li>
+<li>cumsum:累積和(從頭開始依序相加)運算<ul>
+<li>第0個元素維持原樣</li>
+<li>第1個元素=第0個元素＋第1個元素</li>
+<li>第2個元素=第0個元素＋第1個元素＋第2個元素</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#array最小值、最大值、總和、累積和、累積比例</span></span><br><span class="line"><span class="comment">#輸入程式碼</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data = np.array([<span class="number">9</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">10</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;最小值&#x27;</span>, data.<span class="built_in">min</span>())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;最大值&#x27;</span>, data.<span class="built_in">max</span>())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;總和&#x27;</span>, data.<span class="built_in">sum</span>())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;累積和&#x27;</span>, data.cumsum())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;累積比例&#x27;</span>, data.cumsum()/data.<span class="built_in">sum</span>())</span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>最小值 1<br>最大值 10<br>總和 55<br>累積和 [ 9 11 14 18 28 34 41 49 50 55]<br>累積比例 [0.16363636 0.2        0.25454545 0.32727273 0.50909091 0.61818182<br> 0.74545455 0.89090909 0.90909091 1.        ]</p>
+</div>
+
+<h2 id="亂數"><a href="#亂數" class="headerlink" title="亂數"></a>亂數</h2><ul>
+<li>進行資料分析時，會使用亂數將資料隨機的分離，或是<br>加上隨機值來讓資料分佈不一致</li>
+<li>Python也有亂數功能，但資料分析領域通常使用Numpy<br>的亂數功能</li>
+<li>亂數是根據數學式來產生隨機值</li>
+<li>隨機值的初始值稱為「種子」<ul>
+<li>雖然不一定要指定種子，但是指定相同的種子，可以保證每次<br>執行都能取得相同序列的亂數</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">功能</th>
+<th align="left">意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">rand</td>
+<td align="left">均勻分布，0.0以上，小於1.0</td>
+</tr>
+<tr>
+<td align="left">random_sample</td>
+<td align="left">均勻分布，0.0以上，小於1.0(和rand的引數指定方法不同)</td>
+</tr>
+<tr>
+<td align="left">randint</td>
+<td align="left">均勻分布。任意範圍的整數</td>
+</tr>
+<tr>
+<td align="left">randn</td>
+<td align="left">常態分布。平均為0、標準差為1的亂數</td>
+</tr>
+<tr>
+<td align="left">normal</td>
+<td align="left">常態分布。任意平均、標準差的亂數</td>
+</tr>
+<tr>
+<td align="left">bionomial</td>
+<td align="left">二項分布的亂數</td>
+</tr>
+<tr>
+<td align="left">beta</td>
+<td align="left">betta分布的亂數</td>
+</tr>
+<tr>
+<td align="left">gemma</td>
+<td align="left">gamma分布的亂數</td>
+</tr>
+<tr>
+<td align="left">chisquare</td>
+<td align="left">卡方分布的亂</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#產生亂數</span></span><br><span class="line"><span class="comment">#輸入程式碼</span></span><br><span class="line"><span class="keyword">import</span> numpy.random <span class="keyword">as</span> random</span><br><span class="line">random.seed(<span class="number">0</span>)</span><br><span class="line">rnd_data = random.randn(<span class="number">10</span>)</span><br><span class="line"><span class="comment">#顯示到小數點後第三位</span></span><br><span class="line">%precision <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;含有10個亂數的陣列&#x27;</span>, rnd_data)</span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>含有10個亂數的陣列 [ 1.764  0.4    0.979  2.241  1.868 -0.977  0.95  -0.151 -0.103  0.411]</p>
+</div>
+
+<h2 id="資料隨機抽出"><a href="#資料隨機抽出" class="headerlink" title="資料隨機抽出"></a>資料隨機抽出</h2><ul>
+<li>random.choice</li>
+<li>可指定2個引數，1個參數<ul>
+<li>第1個引數：操作對象的陣列</li>
+<li>第2個引數：取出的個數</li>
+<li>參數：為replace，<br>  • 若replace=True或是省略不指定，允許重複地取出，稱為「 放回抽樣」<br>  • 若replace=False，不允許資料的重複地，稱為「不放回抽樣」</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data = np.array([<span class="number">9</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">10</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">5</span>])</span><br><span class="line"><span class="comment"># 隨機取出</span></span><br><span class="line"><span class="comment"># 取出10個(允許重複，放回抽樣)</span></span><br><span class="line"><span class="comment">#輸入程式碼</span></span><br><span class="line"><span class="built_in">print</span>(random.choice(data,<span class="number">10</span>))</span><br><span class="line"><span class="comment">#  取出10個(不允許重複，不放回抽樣)</span></span><br><span class="line"><span class="comment">#輸入程式碼</span></span><br><span class="line"><span class="built_in">print</span>(random.choice(data,<span class="number">10</span>,replace= <span class="literal">False</span>))</span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>[10  6  6  7  1 10  2 10  5  1]<br>[ 6  9 10  3  4  7  1  8  5  2]</p>
+</div>
+
+<h2 id="矩陣"><a href="#矩陣" class="headerlink" title="矩陣"></a>矩陣</h2><ul>
+<li>使用Numpy也能進行矩陣運算</li>
+<li>arange函式具有產生指定連續整數的功能<br>  – arange(9)可產生0~8的整數</li>
+<li>從矩陣中取出列或行，可用[列範圍, 行範圍]來取出</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#產生矩陣</span></span><br><span class="line"><span class="comment">#輸入程式碼</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array1 = np.arange(<span class="number">9</span>)</span><br><span class="line"><span class="built_in">print</span>(array1)</span><br><span class="line">array2 = np.arange(<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(array2)</span><br><span class="line"><span class="comment">#第一列</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;第一列&#x27;</span>, array2[<span class="number">0</span>,:])</span><br><span class="line"><span class="comment">#第一行</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;第一行&#x27;</span>, array2[:,<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>[0 1 2 3 4 5 6 7 8]<br>[[0 1 2]<br> [3 4 5]<br> [6 7 8]]<br>第一列 [0 1 2]<br>第一行 [0 3 6]</p>
+</div>
+
+<ul>
+<li>矩陣乘法要用「dot函式」</li>
+<li>若是用「*」，則是將各自的元素進行乘法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#矩陣運算</span></span><br><span class="line"><span class="comment">#輸入程式碼</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array1 = np.arange(<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">array2 = np.arange(<span class="number">9</span>,<span class="number">18</span>).reshape(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;array1&#x27;</span>,array1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;array2&#x27;</span>,array2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;矩陣乘法: &#x27;</span>, np.dot(array1,array2))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;元素之積: &#x27;</span>, array1*array2)</span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>array1<br>[[0 1 2]<br> [3 4 5]<br> [6 7 8]]<br>array2<br>[[ 9 10 11]<br> [12 13 14]<br> [15 16 17]]<br>矩陣乘法:<br>[[ 42  45  48]<br> [150 162 174]<br> [258 279 300]]<br>元素之積:<br>[[  0  10  22]<br> [ 36  52  70]<br> [ 90 112 136]]</p>
+</div>
+
+<ul>
+<li>在資料分析裡，有時需要製作元素為0或1的矩陣<br>  – 如：[0,0,0,0…..]</li>
+<li>若是逐一寫出相當辛苦，因此提供了專用的語法</li>
+<li>np.zeros: 產生所有元素為0的矩陣</li>
+<li>np.ones: 產生所有元素為1的矩陣</li>
+<li>dtype:可用來指定資料型別<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#製作元素為0或1的矩陣</span></span><br><span class="line"><span class="comment">#輸入程式碼</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="built_in">print</span>(np.zeros((<span class="number">2</span>,<span class="number">3</span>),dtype = np.int64))</span><br><span class="line"><span class="built_in">print</span>(np.ones((<span class="number">2</span>,<span class="number">3</span>),dtype = np.float64))</span><br></pre></td></tr></table></figure>
+<div class="note flat"><p>[[0 0 0]<br> [0 0 0]]<br>[[1. 1. 1.]<br> [1. 1. 1.]]</p>
+</div></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">larry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://www.lalilaza.org/larry891001/2022/03/25/ML/numpy/">https://www.lalilaza.org/larry891001/2022/03/25/ML/numpy/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/larry891001/tags/Data-preprocessing/">Data preprocessing</a><a class="post-meta__tags" href="/larry891001/tags/Machine-Learning/">Machine Learning</a><a class="post-meta__tags" href="/larry891001/tags/numpy/">numpy</a></div><div class="post_share"><div class="social-share" data-image="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/larry891001/2022/03/25/ML/datapreprocessing/"><img class="next-cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" onerror="onerror=null;src='/larry891001/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">資料前處理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/larry891001/2022/03/25/ML/datapreprocessing/" title="資料前處理"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-25</div><div class="title">資料前處理</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="fb-comments" data-colorscheme="light" data-numposts="10" data-order-by="social" data-width="100%"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://img.ruten.com.tw/s1/d/5a/27/21644218247719_383.jpg" onerror="this.onerror=null;this.src='/larry891001/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">larry</div><div class="author-info__description">人間失格-太宰治</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/larry891001/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/larry891001/tags/"><div class="headline">Tags</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/larry891001/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/larry3425527"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Numpy%E7%9A%84%E5%9F%BA%E7%A4%8E"><span class="toc-number">1.</span> <span class="toc-text">Numpy的基礎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%A3%E5%88%97%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">陣列操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5"><span class="toc-number">3.</span> <span class="toc-text">資料型別</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5-1"><span class="toc-number">4.</span> <span class="toc-text">資料型別</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8D%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E9%80%B2%E8%A1%8C%E9%81%8B%E7%AE%97"><span class="toc-number">5.</span> <span class="toc-text">對所有元素進行運算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">6.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E3%80%81%E6%9C%80%E5%A4%A7%E3%80%81%E7%B8%BD%E5%92%8C%E3%80%81%E7%B4%AF%E7%A9%8D%E7%9A%84%E8%A8%88%E7%AE%97"><span class="toc-number">7.</span> <span class="toc-text">最小、最大、總和、累積的計算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%82%E6%95%B8"><span class="toc-number">8.</span> <span class="toc-text">亂數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E9%9A%A8%E6%A9%9F%E6%8A%BD%E5%87%BA"><span class="toc-number">9.</span> <span class="toc-text">資料隨機抽出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%99%A3"><span class="toc-number">10.</span> <span class="toc-text">矩陣</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/03/25/ML/numpy/" title="Numpy"><img src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="Numpy"/></a><div class="content"><a class="title" href="/larry891001/2022/03/25/ML/numpy/" title="Numpy">Numpy</a><time datetime="2022-03-26T07:23:00.030Z" title="Created 2022-03-25 23:23:00">2022-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/03/25/ML/datapreprocessing/" title="資料前處理"><img src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="資料前處理"/></a><div class="content"><a class="title" href="/larry891001/2022/03/25/ML/datapreprocessing/" title="資料前處理">資料前處理</a><time datetime="2022-03-26T06:43:42.632Z" title="Created 2022-03-25 22:43:42">2022-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/03/07/LeetCode/easy/ClimbingStairs/" title="LeetCode -70. Climbing Stairs解題紀錄"><img src="https://miro.medium.com/max/1200/1*Lur9rrJITsFRnuIYURYkSg.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="LeetCode -70. Climbing Stairs解題紀錄"/></a><div class="content"><a class="title" href="/larry891001/2022/03/07/LeetCode/easy/ClimbingStairs/" title="LeetCode -70. Climbing Stairs解題紀錄">LeetCode -70. Climbing Stairs解題紀錄</a><time datetime="2022-03-07T14:10:08.535Z" title="Created 2022-03-07 06:10:08">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/03/04/LeetCode/easy/addbinary/" title="LeetCode -67. Add Binary解題紀錄"><img src="https://miro.medium.com/max/1200/1*Lur9rrJITsFRnuIYURYkSg.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="LeetCode -67. Add Binary解題紀錄"/></a><div class="content"><a class="title" href="/larry891001/2022/03/04/LeetCode/easy/addbinary/" title="LeetCode -67. Add Binary解題紀錄">LeetCode -67. Add Binary解題紀錄</a><time datetime="2022-03-05T07:03:25.265Z" title="Created 2022-03-04 23:03:25">2022-03-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/03/03/LeetCode/easy/PlusOne/" title="LeetCode -66. Plus One解題紀錄"><img src="https://miro.medium.com/max/1200/1*Lur9rrJITsFRnuIYURYkSg.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="LeetCode -66. Plus One解題紀錄"/></a><div class="content"><a class="title" href="/larry891001/2022/03/03/LeetCode/easy/PlusOne/" title="LeetCode -66. Plus One解題紀錄">LeetCode -66. Plus One解題紀錄</a><time datetime="2022-03-03T16:14:48.958Z" title="Created 2022-03-03 08:14:48">2022-03-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By larry</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/larry891001/js/utils.js"></script><script src="/larry891001/js/main.js"></script><script src="/larry891001/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><div id="fb-root"></div><script>function loadFBComment () {
+  var themeNow = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+  document.getElementsByClassName('fb-comments')[0].setAttribute('data-colorscheme',themeNow)
+
+  if (typeof FB === 'object') FB.XFBML.parse()
+  else {
+    let ele = document.createElement('script')
+    ele.setAttribute('src','https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v9.0')
+    ele.setAttribute('async', 'true')
+    ele.setAttribute('defer', 'true')
+    ele.setAttribute('crossorigin', 'anonymous')
+    document.getElementById('fb-root').insertAdjacentElement('afterbegin',ele)
+  }   
+}
+
+if ('Facebook Comments' === 'Facebook Comments' || !false) {
+  if (false) btf.loadComment(document.querySelector('#post-comment .fb-comments'), loadFBComment)
+  else loadFBComment()
+} else {
+  function loadOtherComment () {
+    loadFBComment()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'LarryCommunity/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (false) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/larry891001/'|| '/larry891001/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://www.lalilaza.org/larry891001/categories/OpenCV/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 OpenCV (4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lalilaza.org/larry891001/categories/Python/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🎮 Python (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lalilaza.org/larry891001/categories/LeetCode/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱‍👓 LeetCode (24)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://www.lalilaza.org/larry891001/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/07/11/動漫/86不存在的戰區/" alt=""><img width="48" height="48" src="https://i1.wp.com/anime01kingdom.com/wp-content/uploads/2020/03/img_5e81faee989fd.jpg?w=1200&amp;ssl=1" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-07-11</span><a class="blog-slider__title" href="2021/07/11/動漫/86不存在的戰區/" alt="">86-不存在的戰區</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2021/07/11/動漫/86不存在的戰區/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/05/12/動漫/文豪野犬/" alt=""><img width="48" height="48" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c83c004e-1370-4756-88e5-4071de797088/de0dib6-0d584820-45d9-49c8-a54d-a33b98ac8372.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M4M2MwMDRlLTEzNzAtNDc1Ni04OGU1LTQwNzFkZTc5NzA4OFwvZGUwZGliNi0wZDU4NDgyMC00NWQ5LTQ5YzgtYTU0ZC1hMzNiOThhYzgzNzIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.oIKwFOK9Aqd8E2YOv8KDWQoSyNhyM_7E6T34Td20ZKE" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-05-12</span><a class="blog-slider__title" href="2021/05/12/動漫/文豪野犬/" alt="">文豪野犬</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2021/05/12/動漫/文豪野犬/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/larry891001/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
