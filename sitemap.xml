@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/2022/04/08/ML/clustering/</loc>
+    <loc>https://www.lalilaza.org/larry891001/2022/04/08/ML/regression/</loc>
     
     <lastmod>2022-04-09</lastmod>
     
@@ -11,9 +11,9 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/2022/04/08/ML/regression/</loc>
+    <loc>https://www.lalilaza.org/larry891001/2022/04/08/ML/clustering/</loc>
     
-    <lastmod>2022-04-08</lastmod>
+    <lastmod>2022-04-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -395,13 +395,6 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Regression/</loc>
-    <lastmod>2022-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lalilaza.org/larry891001/tags/%E5%8B%95%E6%BC%AB/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -410,6 +403,13 @@
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/%E8%83%83%E7%97%9B/</loc>
+    <lastmod>2022-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/Regression/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
