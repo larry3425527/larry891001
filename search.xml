@@ -33,31 +33,6 @@
     
     
     <entry>
-      <title>Machine Learning - 01</title>
-      <link href="/larry891001/2022/04/07/ML/ML01/"/>
-      <url>/larry891001/2022/04/07/ML/ML01/</url>
-      
-        <content type="html"><![CDATA[<h2 id="什麼是機器學習"><a href="#什麼是機器學習" class="headerlink" title="什麼是機器學習?"></a>什麼是機器學習?</h2><ul><li>機器學習就是<code>Looking for function</code>，幫助人類找到人類寫不出來的複雜函式</li></ul><h2 id="Different-types-of-function"><a href="#Different-types-of-function" class="headerlink" title="Different types of function"></a>Different types of function</h2><ul><li>函式有各式各樣的輸入及輸出<br><img src="https://img.onl/Eh3uUr" alt="inputoutput"></li></ul><h2 id="監督式學習-Supervised-Learning"><a href="#監督式學習-Supervised-Learning" class="headerlink" title="監督式學習(Supervised Learning):"></a>監督式學習(Supervised Learning):</h2><ul><li>有資料都被「標註」(label)，告訴機器相對應的值，以提供機器學習在輸出時判斷誤差使用。這種方法為人工分類，對電腦來說最簡單，對人類來說最辛苦。這種方法像是告訴機器（電腦）標準答案，正式考試的時候機器依照標準答案作答，正確性會比較高。例如，若要訓練機器區分大象和長頸鹿，則提供機器 100 張大象和長頸鹿的照片。機器依照標註的照片去偵測大象和長頸鹿的特徵，依照特徵就能辨識出大象和長頸鹿並進行預測。</li></ul><h2 id="非監督式學習（Un-supervised-learning）："><a href="#非監督式學習（Un-supervised-learning）：" class="headerlink" title="非監督式學習（Un-supervised learning）："></a>非監督式學習（Un-supervised learning）：</h2><ul><li>所有資料都沒有標註，機器透過尋找資料的特徵，自己進行分類。此種方法不用人工進行分類，對人類來說最簡單，但對電腦來說最辛苦，誤差較大。若使用非監督式學習辨識大象及長頸鹿，機器得自行判斷提供的 100 張照片裡有哪些特徵的是大象、哪些特徵的是長頸鹿並同時進行分類。在未來預測時，利用機器自行所分類的特徵去辨識是哪一種動物。但機器所辨識的結果不一定正確。</li></ul><h2 id="半監督式學習（Semi-supervised-learning）："><a href="#半監督式學習（Semi-supervised-learning）：" class="headerlink" title="半監督式學習（Semi-supervised learning）："></a>半監督式學習（Semi-supervised learning）：</h2><ul><li>對少部分資料進行「標註」，電腦只要透過有標註的資料找出特徵並對其它的資料進行分類。這種方法可以讓預測時比較精準，是目前最常用的一種方式。若有 100 張照片，則標註其中 10 張哪些是大象哪些是長頸鹿。機器透過這 10 張照片的特徵去辨識及分類剩餘的照片。因為已經有辨識的依據，所以預測出來的結果通常比非監督式學習準確。</li></ul><h2 id="強化式學習（Reinforcement-learning）："><a href="#強化式學習（Reinforcement-learning）：" class="headerlink" title="強化式學習（Reinforcement learning）："></a>強化式學習（Reinforcement learning）：</h2><ul><li>機器透過每一次與環境互動來學習，以取得最大化的預期利益。運用強化式學習的方式，我們不標註任何資料，但告訴它所採取的哪一步是正確、那一步是錯誤的，根據反饋的好壞，機器自行逐步修正、最終得到正確的結果。能使非監督式學習達成一定程度的正確性，就不能缺少強化式學習的方式。若機器自行辨識特徵與分類，將某張大象的照片預測成長頸鹿，則人類給予錯誤的訊息。機器會再次辨認特徵及分類。透過一次一次正確與錯誤的學習，最後的預測就會越來越精準</li></ul><h2 id="Self-supervised-Learning"><a href="#Self-supervised-Learning" class="headerlink" title="Self-supervised Learning"></a>Self-supervised Learning</h2><p><img src="https://img.onl/BldlMP" alt="self-supervisesd-learning"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Machine Learning </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Machine Learning </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Pandas</title>
       <link href="/larry891001/2022/03/27/ML/pandas/"/>
       <url>/larry891001/2022/03/27/ML/pandas/</url>
@@ -109,9 +84,9 @@
             
             <tag> Machine Learning </tag>
             
-            <tag> lesson note </tag>
-            
             <tag> numpy </tag>
+            
+            <tag> lesson note </tag>
             
         </tags>
       
