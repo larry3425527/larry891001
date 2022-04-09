@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Clustering</title>
+      <link href="/larry891001/2022/04/08/ML/clustering/"/>
+      <url>/larry891001/2022/04/08/ML/clustering/</url>
+      
+        <content type="html"><![CDATA[<div class="note danger simple"><p>此為上課筆記</p></div><h2 id="非監督式學習-Unsupervised-Learning"><a href="#非監督式學習-Unsupervised-Learning" class="headerlink" title="非監督式學習(Unsupervised Learning)"></a>非監督式學習(Unsupervised Learning)</h2><p>所有資料都沒有標註，機器透過尋找資料的特徵，自己進行分類。此種方法不用人工進行分類，對人類來說最簡單，但對電腦來說最辛苦，誤差較大。若使用非監督式學習辨識大象及長頸鹿，機器得自行判斷提供的照片裡有哪些特徵是大象、哪些特徵的是長頸鹿並同時進行分類。目的是要探索資料並找出其中的結構。</p><h2 id="K-means-Algorithm"><a href="#K-means-Algorithm" class="headerlink" title="K-means Algorithm"></a>K-means Algorithm</h2><p>K-means Clustering這個方法就是「物以類聚」的概念。男生就是男生，女生就是女生，男生會自己聚成一群，女生也會自己聚成一群。<br>但在這群男生自己不會動成一群，女生也不會動成一群，在機器學習內，我們有的就是一組不會動的身高和體重的資料。那是什麼會動，讓男生女生可以區隔開的是什麼? k-means，這邊的k是你想分成幾群，means就是每一群群心（cluster centroid），所以會動的東西就是群心。<br>如果用實際的例子說，大家到新學校上學的時候有沒有一種感覺，第一天到的時候基本上大家都不熟，一個兩個人是一群，後來慢慢會有一群人聚在一起，沒幾天就分成兩群、三群，慢慢的到上學後一個月，基本上班上的小團體都分好了，每個團體都有一個key-man，你可以把這個key-man當作是群心，基本上大家都是因為有這個key-man聚在一起的(如果變節又是另一件事情)。那這個key-man在開學到小團體分好之前，基本上有可能會一直換來換去的，甚至多出一個key-man或是少一個key-man(演算法:ISODATA)，或是這個團體的key-man會因為別人的強勢而換掉，這就是<code>會動=換掉</code>的群心。</p><h2 id="Steps-of-K-means"><a href="#Steps-of-K-means" class="headerlink" title="Steps of K-means"></a>Steps of K-means</h2><p>目的是要決定K個聚類，其滿足最小的square-error function<br><img src="https://img.onl/fOxR3N" alt="clustering1"></p><ol><li>Given n objects, initialize k cluster centers.</li><li>Assign each object to its closest cluster center.</li><li>Update the center for each cluster.</li><li>Repeat 2 and 3 until no change in each cluster center.</li></ol><h2 id="Distance-Measure-Method"><a href="#Distance-Measure-Method" class="headerlink" title="Distance Measure Method"></a>Distance Measure Method</h2><ol><li><p>Euclidean distance measure:</p><ul><li>Simplest</li><li>兩點間的直線距離</li></ul></li><li><p>Cosine distance measure:</p><ul><li> Finds the cosine of angle between two vectors (vectors drawn from origin to the points.)</li></ul></li><li><p>Manhattan distance measure: </p><ul><li>The sum of the absolute differences of the coordinates of two point</li><li>線段的距離總和</li></ul></li></ol><h2 id="The-Drawback-of-K-means"><a href="#The-Drawback-of-K-means" class="headerlink" title="The Drawback of K-means"></a>The Drawback of K-means</h2><ul><li><p>The parameter of K-means:</p><ul><li>Must decide the number of cluster in advance.<br>(分類前必須先定義好群集數量)</li><li>Different initial center will result in different cluster result.<br>(不同的initial center會導致不一樣的結果)</li></ul></li><li><p>The center of K-means can be virtual node.</p></li><li><p>Drawback:</p><ul><li>K-means cannot deal with category data.</li><li>K-means is heavily affect by noise(離群值).<ul><li><code>K-medoids</code></li></ul></li></ul></li></ul><h2 id="K-means-vs-K-medoids"><a href="#K-means-vs-K-medoids" class="headerlink" title="K-means vs. K-medoids"></a>K-means vs. K-medoids</h2><p><img src="https://img.onl/MZNrgy" alt="k-means-vs.K-medoids"></p><h2 id="Hierarchical-Clustering"><a href="#Hierarchical-Clustering" class="headerlink" title="Hierarchical Clustering"></a>Hierarchical Clustering</h2><ul><li>Hierarchical clustering (階層式分群法) is a hierarchical method which generate the clusters by iteratively(聚合) or divisive(分裂) data.</li></ul><ol><li>Agglomerative<ul><li>It is a “bottom-up” method.</li><li>Prepare basic components and iteratively combine the components to be a final solution</li><li>Steps<ol><li>Every node is a cluster</li><li>Scan all the nodes. Choose two nodes which are closest to be a cluster.</li><li>Repeat 2 and 3 until all data becomes a cluster or achieve the x cluster</li></ol></li></ul></li><li>Divisive<ul><li>It is a “top-down” method.</li><li>See the whole picture of the problem and iteratively add the detail to make the solution clear.</li><li>Regard the data as a cluster and iteratively divide the data.</li></ul></li></ol><h2 id="Distance-of-Two-Clusters"><a href="#Distance-of-Two-Clusters" class="headerlink" title="Distance of Two Clusters"></a>Distance of Two Clusters</h2><ol><li>Single-linkage agglomerative algorithm (單一連結聚合演算法)<ul><li>群間的距離定義為兩群中最近點的距離</li></ul></li><li>Complete-linkage agglomerative algorithm (完整連結聚合演算法)<ul><li>群間的距離定義為兩群中最遠點間的距離</li></ul></li><li>Average-linkage agglomerative algorithm (平均連結聚合演算法)<ul><li>群間的距離定義為兩群間各點間的距離總和平均</li></ul></li><li>Centroid method (中心聚合演算法)<ul><li>群間的距離定義為兩群中心點間的距離</li></ul></li><li>Ward’s method (沃德法)<ul><li>群間的距離定義為兩群合併後，各點到合併群中心的距離平方和</li></ul></li></ol><h2 id="Drawback"><a href="#Drawback" class="headerlink" title="Drawback:"></a>Drawback:</h2><ul><li>Hierarchical clustering needs much computation resource since the method has to scan every data in each iteration</li></ul><h2 id="DBSCAN-Density-Based-Spatial-Clustering-of-Applications-with-Noise"><a href="#DBSCAN-Density-Based-Spatial-Clustering-of-Applications-with-Noise" class="headerlink" title="DBSCAN(Density-Based Spatial Clustering of Applications with Noise)"></a>DBSCAN(Density-Based Spatial Clustering of Applications with Noise)</h2><ul><li>原理<br>該演算法將具有足夠密度區域作為距離中心，不斷生長該區域，演算法基於一個事實：一個聚類可以由其中的任何核心物件唯一確定。該演算法利用基於密度的聚類的概念，即要求聚類空間中的一定區域內所包含物件（點或其他空間物件）的數目不小於某一給定閾值。該方法能在具有噪聲的空間資料庫中發現任意形狀的簇，可將密度足夠大的相鄰區域連線，能有效處理異常資料，主要用於對空間資料的聚類</li><li>基本概念<ol><li>Eps鄰域：給定物件半徑Eps內的鄰域稱為該物件的Eps鄰域;</li><li>核心點（core point）：如果物件的Eps鄰域至少包含最小數目MinPts的物件，則稱該物件為核心物件;</li><li>邊界點（border point）：邊界點不是核心點，但落在某個核心點的鄰域內;</li><li>噪音點（outlier point）：既不是核心點，也不是邊界點的任何點;</li></ol></li><li>優點<ol><li>聚類速度快且能夠有效處理噪聲點和發現任意形狀的空間聚類；</li><li>與K-MEANS比較起來，不需要輸入要劃分的聚類個數；</li><li>聚類簇的形狀沒有偏倚；   </li><li>可以在需要時輸入過濾噪聲的引數。</li></ol></li><li>完整運作流程<br><img src="https://miro.medium.com/max/1350/0*o_BoNtBbwvAiNFLB.gif" alt="cluster"></li></ul><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://medium.com/chung-yi/ml%E5%85%A5%E9%96%80-%E5%8D%81%E5%85%AB-k-means-f92b9f1e8871">ML入門（十八）K-Means</a></p><p><a href="https://medium.com/ai-academy-taiwan/clustering-method-4-ed927a5b4377">Clustering Method 4</a></p><p><a href="https://axk51013.medium.com/%E4%B8%8D%E8%A6%81%E5%86%8D%E7%94%A8k-means-%E8%B6%85%E5%AF%A6%E7%94%A8%E5%88%86%E7%BE%A4%E6%B3%95dbscan%E8%A9%B3%E8%A7%A3-a33fa287c0e">不要再用K-means！ 超實用分群法DBSCAN詳解</a></p><p><a href="https://www.itread01.com/content/1547194697.html">聚類方法：DBSCAN演算法研究（1）–DBSCAN原理、流程、引數設定、優缺點以及演算法</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Machine Learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Clustering </tag>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> lesson note </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Regression</title>
       <link href="/larry891001/2022/04/08/ML/regression/"/>
       <url>/larry891001/2022/04/08/ML/regression/</url>
@@ -49,11 +78,11 @@
       
         <tags>
             
-            <tag> Data preprocessing </tag>
-            
             <tag> Machine Learning </tag>
             
             <tag> lesson note </tag>
+            
+            <tag> Data preprocessing </tag>
             
             <tag> Pandas </tag>
             
@@ -80,13 +109,13 @@
       
         <tags>
             
-            <tag> Data preprocessing </tag>
-            
             <tag> Machine Learning </tag>
             
-            <tag> numpy </tag>
-            
             <tag> lesson note </tag>
+            
+            <tag> Data preprocessing </tag>
+            
+            <tag> numpy </tag>
             
         </tags>
       
@@ -111,11 +140,11 @@
       
         <tags>
             
-            <tag> Data preprocessing </tag>
-            
             <tag> Machine Learning </tag>
             
             <tag> lesson note </tag>
+            
+            <tag> Data preprocessing </tag>
             
         </tags>
       

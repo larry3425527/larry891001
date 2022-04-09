@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.lalilaza.org/larry891001/2022/04/08/ML/clustering/</loc>
+    
+    <lastmod>2022-04-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lalilaza.org/larry891001/2022/04/08/ML/regression/</loc>
     
     <lastmod>2022-04-08</lastmod>
@@ -344,7 +353,7 @@
 
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Data-preprocessing/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/Clustering/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -358,13 +367,6 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/numpy/</loc>
-    <lastmod>2022-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lalilaza.org/larry891001/tags/lesson-note/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -372,7 +374,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Regression/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/Data-preprocessing/</loc>
+    <lastmod>2022-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/numpy/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -380,6 +389,13 @@
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Pandas/</loc>
+    <lastmod>2022-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/Regression/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -444,14 +460,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/Data-Preprocessing/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/Machine-Learning/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/Machine-Learning/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/Data-Preprocessing/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
