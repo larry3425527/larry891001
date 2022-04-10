@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>Confusion Matrix</title>
+      <link href="/larry891001/2022/04/09/ML/Confusion/"/>
+      <url>/larry891001/2022/04/09/ML/Confusion/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Confusion-Matrix-混淆矩陣"><a href="#Confusion-Matrix-混淆矩陣" class="headerlink" title="Confusion Matrix(混淆矩陣)"></a>Confusion Matrix(混淆矩陣)</h1><table><thead><tr><th align="center"></th><th align="center">「真實情況」為真</th><th align="center">「真實情況」為非</th></tr></thead><tbody><tr><td align="center">「模型預測」為真(positive)</td><td align="center">true positive(TP)</td><td align="center">false positive(FP)</td></tr><tr><td align="center">「模型預測」為非(negative)</td><td align="center">false negative(FN)</td><td align="center">true negative(TN)</td></tr></tbody></table><ul><li>前面的True和False代表預測本身的結果是正確還是不正確</li><li>而後面的Positive和Negative則是代表預測的方向是正向還是負向的。</li></ul><h2 id="Accuracy、Precision、Recall指標"><a href="#Accuracy、Precision、Recall指標" class="headerlink" title="Accuracy、Precision、Recall指標"></a>Accuracy、Precision、Recall指標</h2><ul><li>Accuracy= (TP+TN)/(TP+FP+FN+TN)<ul><li>所有情形下判斷正確有多少</li><li>在實際正向的情況很少時會失效，如信用卡盜刷，模型可輕易達99%以上</li></ul></li><li>Recall(召回率) = TP/(TP+FN) <ul><li>在實際情形為正向的狀況下，預測「能召回多少」實際正向的答案</li><li>信用卡盜刷</li></ul></li><li>Precision(準確率) = TP/(TP+FP) <ul><li>在預測正向的情形下，實際的「精準度」是多少</li><li>門禁系統</li></ul></li></ul><h2 id="延伸指標"><a href="#延伸指標" class="headerlink" title="延伸指標"></a>延伸指標</h2><p>上述有三種指標，但我們要如何評估哪項指標比較重要呢?<br><img src="https://www.nightynight.info/img/article/classification/24.png" alt="F-measure"></p><ul><li>B=1時的特例 =&gt; F1-score<ul><li>代表Precision和Recall都同等重要，採用F1-Score</li><li>F1-score = 2 * Precision * Recall / (Precision + Recall)</li></ul></li><li>若是precision比較重要，B小一點</li><li>若是recall比較重要，B大一點</li><li>B=0時，即為precision</li><li>B無限大時，即為recall</li></ul><h2 id="多元分類模型指標"><a href="#多元分類模型指標" class="headerlink" title="多元分類模型指標"></a>多元分類模型指標</h2><ul><li><p>對於二元分類，我們可以著重在positive class (例如垃圾信件、有癌症等)，關注positive class的分數</p></li><li><p>但是對於多元分類，對於recall, precision以及f1 score，<br>我們則可以看recall, precision, f1 score的macro, micro and weighted average </p></li><li><p>這些指標將有助於選擇出最好的模型</p><ul><li><p>average = micro<br>  將所有類別看成一個類別，直接計算recall, precision, f1-score</p></li><li><p>average = macro<br>  會對各類別計算各自的recall, precision, f1-score，再計算他們的平均</p></li><li><p>average = weighted<br>  因爲macro會有樣本數不平衡問題，因此在計算出各自的recall, precision, f1-score後，對各類別給予權重，再計算平均</p></li></ul></li></ul><h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p><img src="https://img.onl/otEsi4" alt="example"></p><ul><li>Accuracy = (5+6+2)/25   = 13/25</li><li>Recall for class B      = 6/(2+6) = 3/4</li><li>Precision for class B   = 6/(2+6+2) = 3/5</li><li>Micro-Average Recall    = (5+6+2)/((5+6+2)+(5+4+3))<br>sum up the individual class’s <code>TP</code>, <code>FP</code>,and <code>FN</code> of the system for different sets and then apply them to get the score</li><li>Marco-Average Recall    = (0.5+0.75+0.29)/3 =0.513<br>The mean of the recalls of classes A, B and C </li><li>Weighted-Average Recall =  (10*0.5+8*0.75+7*0.29)/25 = 0.5212<br>The sum of the scores of all classes after multiplying their respective class proportions.</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Machine Learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> lesson note </tag>
+            
+            <tag> Confusion Matrix </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Basic Machine Learning Model</title>
+      <link href="/larry891001/2022/04/09/ML/BasicMLmodel/"/>
+      <url>/larry891001/2022/04/09/ML/BasicMLmodel/</url>
+      
+        <content type="html"><![CDATA[<div class="note danger simple"><p>此為上課筆記</p></div><h2 id="classification"><a href="#classification" class="headerlink" title="classification"></a>classification</h2><p>監督式學習最常處理的兩個問題：迴歸、分類。當你預測的目標為連續的值，我們稱其為迴歸；若目標為離散的，稱其為分類。<br>常見的演算法：決策樹、邏輯迴歸、SVM（支援向量機）、樸素貝葉斯、kNN</p><h1 id="Decision-Tree-決策樹"><a href="#Decision-Tree-決策樹" class="headerlink" title="Decision Tree(決策樹)"></a>Decision Tree(決策樹)</h1><p>決策樹會根據訓練資料產生一棵樹，依據訓練出來的規則來對新樣本進行預測。決策樹演算法可以使用不同的方式來評估分枝的好壞(亂度)，例如像是Information gain、Gain ratio、Gini index。依據訓練資料找出合適的規則，最終生成一個規則樹來決策所有事情，其目的使每一個決策能夠使訊息增益最大化。就好比我們評估今天比賽是否舉行，天氣因子可能佔比較大的因素，而Co2的濃度高低可能佔的因子程度較低。因此在第一層的決策中以天氣的特徵先進行第一次的決策判斷。接著第二層再從所有特徵中尋找最適合的決策因子，直到設定的最大樹的深度即停止樹的生長。<br><img src="https://ithelp.ithome.com.tw/upload/images/20210924/201072476CHqRkXf16.png" alt="Decision Tree"></p><h2 id="決策樹如何生成"><a href="#決策樹如何生成" class="headerlink" title="決策樹如何生成?"></a>決策樹如何生成?</h2><p>決策樹是以一個<code>Greedy Algorithm</code>來決定每一層要問什麼問題，目標是分類過後每一群能夠很明顯的知道是屬於哪一種類別。延續上面的例子，以分類問題來說假設要評估明天比賽是否舉行。在樹的第一層節點中我們要從已知的兩個特徵分別是溫度與特徵選一個作為該層的決策因子。假設目前訓練集有五筆資料，其中正常舉行的有兩筆資料，取消舉行的有三筆資料。在樹的結構中左子樹為決策正常舉行，而右子樹是決策取消舉行。我們可以發現當特徵為天氣的時候可以一很清楚的將這兩類別完整分開，因此我們會將天氣作為這一層判斷的因子。這就是決策樹在生成中的貪婪機制。然而要如何去判斷每次決策的好壞，就必須依靠亂度的評估指標。<br><img src="https://ithelp.ithome.com.tw/upload/images/20210924/20107247ZEfzbnhMZY.png" alt="Example"></p><h2 id="決策樹何時停止生長"><a href="#決策樹何時停止生長" class="headerlink" title="決策樹何時停止生長"></a>決策樹何時停止生長</h2><ul><li> All samples for a given node belong to the same class</li><li> There are no remaining attributes for further partitioning – majority<br>voting is employed for classifying the leaf</li><li> There are no samples left</li></ul><h2 id="決策樹的建構議題"><a href="#決策樹的建構議題" class="headerlink" title="決策樹的建構議題"></a>決策樹的建構議題</h2><ol><li>分裂的準則 Split criterion (goodness function)<ul><li>used to select the attribures to be split at a tree node during the tree generation phase<br>different algorithms may use different goodness functions:<ul><li>information gain used in ID3/C4.5</li><li>Gini index used in CART</li></ul></li></ul></li><li>分枝的方案 Branch scheme<ul><li>determining the tree branch to which a sample belongs</li><li>binary or k-ary splitting</li></ul></li><li>何時停止分枝<ul><li>impurity measure</li></ul></li><li>訂定標籤的規則<ul><li>a node is labeled as the class to which most samples at the node belongs</li></ul></li></ol><h2 id="決策樹的混亂評估指標"><a href="#決策樹的混亂評估指標" class="headerlink" title="決策樹的混亂評估指標"></a>決策樹的混亂評估指標</h2><p>我們需要客觀的標準來決定決策樹的每個分支，因此我們需要有一個評斷的指標來協助我們決策。決策樹演算法可以使用不同的指標來評估分枝的好壞，常見的決策亂度評估指標有 Information gain、Gain ratio、Gini index。我們目標是從訓練資料中找出一套決策規則，讓每一個決策能夠使訊息增益最大化。以下的指標都是在衡量一個序列中的混亂程度，其數值越高代表越混亂。然而在 Sklearn 套件中預設使用 Gini。</p><ul><li>Information gain (資訊獲利)</li><li>Gain ratio (吉尼獲利)</li><li>Gini index (吉尼係數) = Gini Impurity (吉尼不純度)</li></ul><h2 id="評估資訊分割量"><a href="#評估資訊分割量" class="headerlink" title="評估資訊分割量"></a>評估資訊分割量</h2><ul><li>由於我們希望獲得的資訊量要最大，因此經由分割後的資訊量要越小越好。<br>常見的資訊量有兩種：<ol><li>熵(Entropy)<ul><li>熵 (Entropy) 是計算 Information Gain 的一種方法。在了解 Information Gain 之前要先了解熵是如何被計算出來的。其中在下圖公式中 p 代表是的機率、q 代表否的機率。我們可以從圖中範例很清楚地知道當所有的資料都被分類一致的時候 Entropy 即為 0，當資料各有一半不同時 Entropy 即為 1。<br><img src="https://ithelp.ithome.com.tw/upload/images/20210924/20107247mh1JOY7jsZ.png" alt="Entropy"></li></ul></li><li>Gini 不純度 (Gini Impurity)<ul><li>Gini 不純度是另一種亂度的衡量方式，它的數字越大代表序列中的資料越混亂。公式如下所示，其中 p 代表是的機率、q 為代表的機率。我們可以從圖中範例很清楚地知道當所有的資料都被分類一致的時候混亂程度即為 0，當資料各有一半不同時混亂程度即為 0.5。<br><img src="https://ithelp.ithome.com.tw/upload/images/20210924/20107247b3lmqP6cDf.png" alt="Gini"></li></ul></li></ol></li></ul><h1 id="Random-Forest-隨機森林"><a href="#Random-Forest-隨機森林" class="headerlink" title="Random Forest(隨機森林)"></a>Random Forest(隨機森林)</h1><p>Random Forest的基本原理是，結合多顆CART樹（CART樹為使用GINI算法的決策樹），並加入隨機分配的訓練資料，以大幅增進最終的運算結果。顧名思義就是由許多不同的決策樹所組成的一個學習器，其想法就是結合多個「弱學習器」來建構一個更強的模型：「強學習器」。這種方法又稱為整體機器學習(Ensemble learning)演算法，而這種模型比較不會有偏差或是發生高度適合(Overfit)。</p><h2 id="形成多棵樹"><a href="#形成多棵樹" class="headerlink" title="形成多棵樹"></a>形成多棵樹</h2><p>我們只有一個數據集，為了進行Ensemble Method，所以是要產生不同的數據集，如此才能產生多顆具差異性的CART樹，其作法有兩種方式：</p><ol><li><p>Bagging(Boostrap Aggregation)<br>此種作法是從原有的數據集內重新取樣產生新的數據集，且取的過程是「均勻且可重複取樣的」<br>這種做法會從原有的數據集內產生新的k個數據集，再訓練出k個分類器(CART樹)，每次取出的數據都會放回原數據集，因此彼此之間可能會有資料重複，不過每個樹還是會有不同的樣本，因此每棵樹還是不同的，最後每個樹的權重統一由投票方式決定(Majority vote)</p></li><li><p>Boosting<br>和Bagging方式類似，不過更強調「對錯誤的部分加強學習」，透過將舊分類器錯誤資料的權重提高，加重對錯誤資料的訓練，訓練出新的分類器，這樣新的分類器就會學習到錯誤資料的特性，進而提升分類結果。</p></li></ol><h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><ol><li>定義大小為n的隨機樣本（這裡指的是用bagging方法），就是從資料集中隨機選取n個資料，取完後放回。</li><li>從選取的n個資料中，訓練出決策樹。對每一個節點：</li></ol><ul><li>隨機選取d個特徵</li><li>使用特徵分割該節點（信息增益，information gain）</li></ul><ol start="3"><li>重複k次步驟1~步驟2</li><li>匯總所有決策樹的預測，以多數決的方式，來決定分類結果。</li></ol><h1 id="SVM-支援向量機"><a href="#SVM-支援向量機" class="headerlink" title="SVM(支援向量機)"></a>SVM(支援向量機)</h1><p>支持向量機 (support vector machine, SVM) 是一個基於統計學習的監督式演算法，透過找出一個超平面，使之將兩個不同的集合分開。一般的分類問題我們就是要找出在不同的資料類別中的分隔線。但在一般狀況下這個分隔線非常複雜且有很多種可能。然而 SVM 就是要在這很多種的可能當中找出最佳的解。SVM演算法的精神就是找出一條分隔線使所有在邊界上的點離得越遠越好，使模型抵抗雜訊的能力更佳。</p><h2 id="種類"><a href="#種類" class="headerlink" title="種類"></a>種類</h2><ol><li>線性分類器 (Linear Classifiers):<br> 線性可分支持向量機就是在下圖範例的二維圖形中找出一條線，目標讓這條直線與兩個類別之間的間隔寬度距離最大化。其中離兩條虛線(間隔超平面)距離最近的點，就稱為支持向量 (support vector)。<br> <img src="https://ithelp.ithome.com.tw/upload/images/20210923/20107247rJUDvApGWA.png" alt="Linear"></li><li>非線性可分支持向量機(Non-linear Classifiers):<br> 除了進行線性分類之外 SVM 還可以使用核技巧有效地進行非線性分類，將其輸入的資料投到更高維度的空間，並在高維度的空間進行高維度的分類或降維。簡單來說透過多維度的投影技巧，將原本在二維空間中不可分的點到了三維空間就可分了。但是隨著資料量增加其運算也會變多，相對的執行速度就會變慢。<br> <img src="https://ithelp.ithome.com.tw/upload/images/20210923/201072470aQeXnnzv1.png" alt="Non-Linear"><br> 兩個非線性的 Kernel：<ul><li>Polynomial 高次方轉換</li><li>Radial Basis Function 高斯轉換</li></ul></li></ol><h2 id="二元分類-v-s-多元分類"><a href="#二元分類-v-s-多元分類" class="headerlink" title="二元分類 v.s. 多元分類"></a>二元分類 v.s. 多元分類</h2><ul><li>one-vs-rest(OvR)<br>將某個類別的樣本歸為一類，其他剩餘的樣本歸為另一類</li><li>many-vs-many(MvM)<br>在任意兩類樣本之間設計一個SVM</li></ul><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://ithelp.ithome.com.tw/articles/10271143">[Day 12] 決策樹 (Decision tree)</a><br><a href="https://medium.com/jameslearningnote/%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E7%AC%AC3-5%E8%AC%9B-%E6%B1%BA%E7%AD%96%E6%A8%B9-decision-tree-%E4%BB%A5%E5%8F%8A%E9%9A%A8%E6%A9%9F%E6%A3%AE%E6%9E%97-random-forest-%E4%BB%8B%E7%B4%B9-7079b0ddfbda">[資料分析&amp;機器學習] 第3.5講 : 決策樹(Decision Tree)以及隨機森林(Random Forest)介紹</a><br><a href="https://medium.com/jameslearningnote/%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E7%AC%AC3-4%E8%AC%9B-%E6%94%AF%E6%8F%B4%E5%90%91%E9%87%8F%E6%A9%9F-support-vector-machine-%E4%BB%8B%E7%B4%B9-9c6c6925856b">[資料分析&amp;機器學習] 第3.4講：支援向量機(Support Vector Machine)介紹</a><br><a href="https://ithelp.ithome.com.tw/articles/10270447">[Day 11] 核模型 - 支持向量機 (SVM)</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Machine Learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> classification </tag>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> lesson note </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Clustering</title>
       <link href="/larry891001/2022/04/08/ML/clustering/"/>
       <url>/larry891001/2022/04/08/ML/clustering/</url>
@@ -20,11 +78,11 @@
       
         <tags>
             
-            <tag> Clustering </tag>
-            
             <tag> Machine Learning </tag>
             
             <tag> lesson note </tag>
+            
+            <tag> Clustering </tag>
             
         </tags>
       
