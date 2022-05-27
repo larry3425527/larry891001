@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.lalilaza.org/larry891001/2022/05/26/LeetCode/easy/StepsToReduceZero/</loc>
+    
+    <lastmod>2022-05-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lalilaza.org/larry891001/2022/05/25/ML/CNN/</loc>
     
     <lastmod>2022-05-27</lastmod>
@@ -491,13 +500,6 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/LeetCode/</loc>
-    <lastmod>2022-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Google-map-API/</loc>
     <lastmod>2022-05-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -506,6 +508,13 @@
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/contest/</loc>
+    <lastmod>2022-05-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/LeetCode/</loc>
     <lastmod>2022-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -549,14 +558,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/LeetCode/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/Contest/</loc>
     <lastmod>2022-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/Contest/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/LeetCode/</loc>
     <lastmod>2022-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
