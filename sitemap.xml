@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.lalilaza.org/larry891001/2022/05/27/LeetCode/Mid/AddTwoNums/</loc>
+    
+    <lastmod>2022-05-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lalilaza.org/larry891001/2022/05/26/LeetCode/easy/StepsToReduceZero/</loc>
     
     <lastmod>2022-05-27</lastmod>
@@ -416,7 +425,7 @@
 
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/classification/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/CNN/</loc>
     <lastmod>2022-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -437,7 +446,7 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/CNN/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/classification/</loc>
     <lastmod>2022-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -451,13 +460,6 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Clustering/</loc>
-    <lastmod>2022-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Data-preprocessing/</loc>
     <lastmod>2022-05-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -465,7 +467,7 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/numpy/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/Clustering/</loc>
     <lastmod>2022-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -473,6 +475,13 @@
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Pandas/</loc>
+    <lastmod>2022-05-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/numpy/</loc>
     <lastmod>2022-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
