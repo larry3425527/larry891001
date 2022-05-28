@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.lalilaza.org/larry891001/2022/05/28/ML/RNN/</loc>
+    
+    <lastmod>2022-05-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/2022/05/28/ML/NLP/</loc>
+    
+    <lastmod>2022-05-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lalilaza.org/larry891001/2022/05/28/LeetCode/Mid/LongestSubstringWithoutRepeatingCharacters/</loc>
     
     <lastmod>2022-05-28</lastmod>
@@ -455,6 +473,13 @@
   </url>
   
   <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/CNN/</loc>
+    <lastmod>2022-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Confusion-Matrix/</loc>
     <lastmod>2022-05-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -462,7 +487,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/CNN/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/NLP/</loc>
+    <lastmod>2022-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/RNN/</loc>
     <lastmod>2022-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -490,14 +522,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Google-map-API/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/Pandas/</loc>
     <lastmod>2022-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/contest/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/Regression/</loc>
     <lastmod>2022-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -518,14 +550,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Pandas/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/Google-map-API/</loc>
     <lastmod>2022-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Regression/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/contest/</loc>
     <lastmod>2022-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -548,14 +580,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/object-detection/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/Python/</loc>
     <lastmod>2022-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/Python/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/object-detection/</loc>
     <lastmod>2022-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

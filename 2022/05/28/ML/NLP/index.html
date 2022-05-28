@@ -1,0 +1,292 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>自然語言處理(NLP) | La哩La渣</title><meta name="keywords" content="Machine Learning,lesson note,NLP"><meta name="author" content="larry"><meta name="copyright" content="larry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="此為上課筆記   『自然語言處理』(NLP) 讓電腦擁有理解人類語言的能力，就是自然語言處理 (Natural Language Processing，縮寫 NLP)。 主要範疇: 文本朗讀（Text to speech）&#x2F; 語音合成（Speech synthesis） 語音識別（Speech recognition） 自動分詞（word segmentation） 詞性標註（Part-of-sp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自然語言處理(NLP)">
+<meta property="og:url" content="https://www.lalilaza.org/larry891001/2022/05/28/ML/NLP/index.html">
+<meta property="og:site_name" content="La哩La渣">
+<meta property="og:description" content="此為上課筆記   『自然語言處理』(NLP) 讓電腦擁有理解人類語言的能力，就是自然語言處理 (Natural Language Processing，縮寫 NLP)。 主要範疇: 文本朗讀（Text to speech）&#x2F; 語音合成（Speech synthesis） 語音識別（Speech recognition） 自動分詞（word segmentation） 詞性標註（Part-of-sp">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg">
+<meta property="article:published_time" content="2022-05-28T09:28:53.445Z">
+<meta property="article:modified_time" content="2022-05-28T12:48:07.270Z">
+<meta property="article:author" content="larry">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="lesson note">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg"><link rel="shortcut icon" href="/larry891001/img/favicon.png"><link rel="canonical" href="https://www.lalilaza.org/larry891001/2022/05/28/ML/NLP/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/larry891001/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-472VR63SXM"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-472VR63SXM');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/larry891001/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '自然語言處理(NLP)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-28 04:48:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><script src="/live2d-widget/autoload.js"></script><link rel="stylesheet" href="/css/tag-diy.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://img.ruten.com.tw/s1/d/5a/27/21644218247719_383.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/archives/"><div class="headline">Articles</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/larry891001/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/larry891001/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/larry891001/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/larry891001/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/larry891001/">La哩La渣</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/larry891001/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/larry891001/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/larry891001/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/larry891001/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">自然語言處理(NLP)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-05-28T09:28:53.445Z" title="Created 2022-05-28 01:28:53">2022-05-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-05-28T12:48:07.270Z" title="Updated 2022-05-28 04:48:07">2022-05-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/larry891001/categories/Machine-Learning/">Machine Learning</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="自然語言處理(NLP)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note danger simple"><p>此為上課筆記</p>
+</div>
+
+<h2 id="『自然語言處理』-NLP"><a href="#『自然語言處理』-NLP" class="headerlink" title="『自然語言處理』(NLP)"></a>『自然語言處理』(NLP)</h2><ul>
+<li>讓電腦擁有理解人類語言的能力，就是自然語言處理 (Natural Language Processing，縮寫 NLP)。</li>
+<li>主要範疇:<ol>
+<li>文本朗讀（Text to speech）/ 語音合成（Speech synthesis）</li>
+<li>語音識別（Speech recognition）</li>
+<li>自動分詞（word segmentation）</li>
+<li>詞性標註（Part-of-speech tagging）</li>
+<li>句法分析（Parsing）</li>
+<li>自然語言生成（Natural language generation）</li>
+<li>文本分類（Text categorization）</li>
+<li>信息檢索（Information retrieval）</li>
+<li>信息抽取（Information extraction）</li>
+<li>文字校對（Text-proofing）</li>
+<li>問答系統（Question answering）</li>
+<li>機器翻譯（Machine translation）</li>
+<li>自動摘要（Automatic summarization）</li>
+<li>文字蘊涵（Textual entailment）</li>
+</ol>
+</li>
+</ul>
+<h2 id="語文的特性"><a href="#語文的特性" class="headerlink" title="語文的特性"></a>語文的特性</h2><p>影像相對於語文來說非常單純，人類的語言具高度曖昧性，一句話可能有不同的的意思或是隱喻，且隨著時代演進不斷變化，新詞會不斷的被創造出來，語言學家越來越難建立規則(文法及語意學)來規範語文。另外，由於語文的不規則性，在放入模型解析之前，我們通常會先對輸入的語文做前置處理(Preprocess)，包括：</p>
+<ol>
+<li><p>資料清理(Data Cleaning)：例如我們抓網頁資料，必須先清除 HTML 標籤(Tag)，取出乾淨的本文。</p>
+</li>
+<li><p>標點符號(Punctuation)：對語意沒有影響，通常會忽略他們。</p>
+</li>
+<li><p>分詞(Tokenize)：英文較容易，一般以空白即可，但中文就比較困難。</p>
+</li>
+<li><p>Stop Words：例如英文的『the』、『as』、『to』、『from』…等介係詞或助詞，他們對語文大意的瞭解可能沒有太大的幫助，通常會忽略他們。</p>
+</li>
+<li><p>『詞嵌入』(Word Embedding)：要交給電腦計算，將單字轉數值會比較容易處理，『詞嵌入』技術通常會將單字轉為實數，以形成連續的向量空間，比較有名的模型包括Word2Vec 及 GloVe。</p>
+</li>
+<li><p>相似詞整理：意義相近的單字或片語，在解析字句及分類時必須能呈現出來，Google Tomas Mikolov 創造 Word2Vec 模型，以向量(Vector)空間來定義單字(Word)。</p>
+</li>
+<li><p>『語料庫』(Corpus)：要能訓練模型，必須要有大量的標註資料，NLTK(Natural Language Toolkit)工具箱同時提供完整的函數庫及大量的語料庫，各式的語料庫可透過下列指令下載：</p>
+<ul>
+<li>安裝 NLTK 函數庫<br>pip install -U nltk</li>
+<li>在DOS內輸入Python<br>import nltk<br>nltk.download()<br>或直接下載全部語料庫:<br>python -m nltk.downloader all</li>
+</ul>
+</li>
+</ol>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>要理解一段話，首先要從單字開始，進而到片語(Phrase)、句子(Sentence)，加上文法(Syntax)、語意(Semantics)解析，我們才能理解這一段話的意義，如果要從這樣的導向(Approach)出發，我們可能要聘請語言學專家建置龐大的『規則引擎』(Rule Engine)才行，工程浩大，所費不貲，維護成本可能也是天文數字，反之，從另一種角度思考，可否與CNN一樣，改為提供大量字句，讓機器自我學習 ?<br>如果，我們把字句當作input，餵入Neural Network模型，希望機器產生適當的回應，會有幾個問題要解決：</p>
+<ul>
+<li>字句有長有短，即 input 變數數目不等，回應也是一樣的狀況，output 變數數目也不等。</li>
+<li>語文會有上下文的關係，斷章取義，常會扭曲全文代表的意義。</li>
+<li>人類擁有記憶力，對某些人、事、物會有深度的連結，講到『川普』，可能會想到『北韓』，若機器擁有記憶力機制，預測準確率就會高很多。</li>
+<li>針對以上的語文特性，學者提出三個解決問題的演算法，分別為『循環神經網路』(Recurrent Neural Network, RNN)、長短期記憶網路(Long Short Term Memory Network, LSTM)及 GRU (Gated Recurrent Unit)</li>
+</ul>
+<p><a href="">RNN</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10193224">自然語言處理</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">larry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://www.lalilaza.org/larry891001/2022/05/28/ML/NLP/">https://www.lalilaza.org/larry891001/2022/05/28/ML/NLP/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/larry891001/tags/Machine-Learning/">Machine Learning</a><a class="post-meta__tags" href="/larry891001/tags/lesson-note/">lesson note</a><a class="post-meta__tags" href="/larry891001/tags/NLP/">NLP</a></div><div class="post_share"><div class="social-share" data-image="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/larry891001/2022/05/28/ML/RNN/"><img class="prev-cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" onerror="onerror=null;src='/larry891001/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">遞迴神經網路(recurrent neural networks，RNN)</div></div></a></div><div class="next-post pull-right"><a href="/larry891001/2022/05/28/LeetCode/Mid/LongestSubstringWithoutRepeatingCharacters/"><img class="next-cover" src="https://miro.medium.com/max/1200/1*Lur9rrJITsFRnuIYURYkSg.png" onerror="onerror=null;src='/larry891001/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">LeetCode -3. Longest Substring Without Repeating Characters解題紀錄</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/larry891001/2022/04/09/ML/BasicMLmodel/" title="Basic Machine Learning Model"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-09</div><div class="title">Basic Machine Learning Model</div></div></a></div><div><a href="/larry891001/2022/05/25/ML/CNN/" title="卷積神經網路(Convolutional neural network, CNN)"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-25</div><div class="title">卷積神經網路(Convolutional neural network, CNN)</div></div></a></div><div><a href="/larry891001/2022/04/09/ML/Confusion/" title="Confusion Matrix"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-09</div><div class="title">Confusion Matrix</div></div></a></div><div><a href="/larry891001/2022/05/28/ML/RNN/" title="遞迴神經網路(recurrent neural networks，RNN)"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-28</div><div class="title">遞迴神經網路(recurrent neural networks，RNN)</div></div></a></div><div><a href="/larry891001/2022/04/08/ML/clustering/" title="Clustering"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-08</div><div class="title">Clustering</div></div></a></div><div><a href="/larry891001/2022/03/25/ML/datapreprocessing/" title="資料前處理"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-25</div><div class="title">資料前處理</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="fb-comments" data-colorscheme="light" data-numposts="10" data-order-by="social" data-width="100%"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://img.ruten.com.tw/s1/d/5a/27/21644218247719_383.jpg" onerror="this.onerror=null;this.src='/larry891001/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">larry</div><div class="author-info__description">人間失格-太宰治</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/larry891001/archives/"><div class="headline">Articles</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/larry891001/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div><div class="card-info-data-item is-center"><a href="/larry891001/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/larry3425527"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%8E%E8%87%AA%E7%84%B6%E8%AA%9E%E8%A8%80%E8%99%95%E7%90%86%E3%80%8F-NLP"><span class="toc-number">1.</span> <span class="toc-text">『自然語言處理』(NLP)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AA%9E%E6%96%87%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">語文的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90"><span class="toc-number">3.</span> <span class="toc-text">總結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/05/28/ML/RNN/" title="遞迴神經網路(recurrent neural networks，RNN)"><img src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="遞迴神經網路(recurrent neural networks，RNN)"/></a><div class="content"><a class="title" href="/larry891001/2022/05/28/ML/RNN/" title="遞迴神經網路(recurrent neural networks，RNN)">遞迴神經網路(recurrent neural networks，RNN)</a><time datetime="2022-05-28T12:47:45.118Z" title="Created 2022-05-28 04:47:45">2022-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/05/28/ML/NLP/" title="自然語言處理(NLP)"><img src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="自然語言處理(NLP)"/></a><div class="content"><a class="title" href="/larry891001/2022/05/28/ML/NLP/" title="自然語言處理(NLP)">自然語言處理(NLP)</a><time datetime="2022-05-28T09:28:53.445Z" title="Created 2022-05-28 01:28:53">2022-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/05/28/LeetCode/Mid/LongestSubstringWithoutRepeatingCharacters/" title="LeetCode -3. Longest Substring Without Repeating Characters解題紀錄"><img src="https://miro.medium.com/max/1200/1*Lur9rrJITsFRnuIYURYkSg.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="LeetCode -3. Longest Substring Without Repeating Characters解題紀錄"/></a><div class="content"><a class="title" href="/larry891001/2022/05/28/LeetCode/Mid/LongestSubstringWithoutRepeatingCharacters/" title="LeetCode -3. Longest Substring Without Repeating Characters解題紀錄">LeetCode -3. Longest Substring Without Repeating Characters解題紀錄</a><time datetime="2022-05-28T08:45:04.845Z" title="Created 2022-05-28 00:45:04">2022-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/05/27/LeetCode/Mid/AddTwoNums/" title="LeetCode -2. Add Two Numbers解題紀錄"><img src="https://miro.medium.com/max/1200/1*Lur9rrJITsFRnuIYURYkSg.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="LeetCode -2. Add Two Numbers解題紀錄"/></a><div class="content"><a class="title" href="/larry891001/2022/05/27/LeetCode/Mid/AddTwoNums/" title="LeetCode -2. Add Two Numbers解題紀錄">LeetCode -2. Add Two Numbers解題紀錄</a><time datetime="2022-05-27T11:56:08.751Z" title="Created 2022-05-27 03:56:08">2022-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/05/26/LeetCode/easy/StepsToReduceZero/" title="LeetCode -1342. Number of Steps to Reduce a Number to Zero 解題紀錄"><img src="https://miro.medium.com/max/1200/1*Lur9rrJITsFRnuIYURYkSg.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="LeetCode -1342. Number of Steps to Reduce a Number to Zero 解題紀錄"/></a><div class="content"><a class="title" href="/larry891001/2022/05/26/LeetCode/easy/StepsToReduceZero/" title="LeetCode -1342. Number of Steps to Reduce a Number to Zero 解題紀錄">LeetCode -1342. Number of Steps to Reduce a Number to Zero 解題紀錄</a><time datetime="2022-05-27T07:18:56.920Z" title="Created 2022-05-26 23:18:56">2022-05-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By larry</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/larry891001/js/utils.js"></script><script src="/larry891001/js/main.js"></script><script src="/larry891001/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><div id="fb-root"></div><script>function loadFBComment () {
+  var themeNow = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+  document.getElementsByClassName('fb-comments')[0].setAttribute('data-colorscheme',themeNow)
+
+  if (typeof FB === 'object') FB.XFBML.parse()
+  else {
+    let ele = document.createElement('script')
+    ele.setAttribute('src','https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v9.0')
+    ele.setAttribute('async', 'true')
+    ele.setAttribute('defer', 'true')
+    ele.setAttribute('crossorigin', 'anonymous')
+    document.getElementById('fb-root').insertAdjacentElement('afterbegin',ele)
+  }   
+}
+
+if ('Facebook Comments' === 'Facebook Comments' || !false) {
+  if (false) btf.loadComment(document.querySelector('#post-comment .fb-comments'), loadFBComment)
+  else loadFBComment()
+} else {
+  function loadOtherComment () {
+    loadFBComment()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'LarryCommunity/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (false) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/larry891001/'|| '/larry891001/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://www.lalilaza.org/larry891001/categories/OpenCV/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 OpenCV (4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lalilaza.org/larry891001/categories/Python/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🎮 Python (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lalilaza.org/larry891001/categories/LeetCode/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱‍👓 LeetCode (28)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://www.lalilaza.org/larry891001/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/07/11/動漫/86不存在的戰區/" alt=""><img width="48" height="48" src="https://i1.wp.com/anime01kingdom.com/wp-content/uploads/2020/03/img_5e81faee989fd.jpg?w=1200&amp;ssl=1" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-07-11</span><a class="blog-slider__title" href="2021/07/11/動漫/86不存在的戰區/" alt="">86-不存在的戰區</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2021/07/11/動漫/86不存在的戰區/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/05/12/動漫/文豪野犬/" alt=""><img width="48" height="48" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c83c004e-1370-4756-88e5-4071de797088/de0dib6-0d584820-45d9-49c8-a54d-a33b98ac8372.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M4M2MwMDRlLTEzNzAtNDc1Ni04OGU1LTQwNzFkZTc5NzA4OFwvZGUwZGliNi0wZDU4NDgyMC00NWQ5LTQ5YzgtYTU0ZC1hMzNiOThhYzgzNzIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.oIKwFOK9Aqd8E2YOv8KDWQoSyNhyM_7E6T34Td20ZKE" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-05-12</span><a class="blog-slider__title" href="2021/05/12/動漫/文豪野犬/" alt="">文豪野犬</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2021/05/12/動漫/文豪野犬/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/larry891001/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>

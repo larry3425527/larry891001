@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>遞迴神經網路(recurrent neural networks，RNN)</title>
+      <link href="/larry891001/2022/05/28/ML/RNN/"/>
+      <url>/larry891001/2022/05/28/ML/RNN/</url>
+      
+        <content type="html"><![CDATA[<div class="note danger simple"><p>此為上課筆記</p></div><h2 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h2><p>建立語言的相關模型，如果能額外考慮上下文的關係，準確率就會顯著提高，因此，學者提出『循環神經網路』(Recurrent Neural Network, RNN)演算法，它是『自然語言處理』領域最常使用的Neural Network模型，簡單的RNN模型(Vanilla RNN)額外考慮前文的關係，他是一種專門設計來解決時間相關問題的神經網路(note: 時間相關問題，就是當下的答案會受過去的答案影響，而且也會影響未來的答案的一種特殊情況。也可以說是次序相關問題。)，RNN主要是透過將隱藏層的output存在Memory裡，當下次input資料進去train的時候，會同時考慮上一次存在Memory裡的值進行計算。</p><div class="note modern simple"><p>而只要答案有所謂的時間相關性，那他就是一個時間相關問題，可以用RNN來解決。</p></div><p>下圖所示為Simple-RNN的神經網路示意圖。神經網路為A，通過讀取某個時間(狀態)的輸入xt，然後輸出一個值ht，循環可以使得信息從當前時間步傳遞到下一時間步。<br>這些循環使得RNN可以被看作同一網路在不同時間步的多次循環，每個神經元會把更新的結果傳遞給下一個時間步，下圖右側即為循環展開的情形。<br><img src="https://4.bp.blogspot.com/-U-b50pPNd_s/WQ8C-5g0siI/AAAAAAAAI8c/VCpWPA-z3Y8iTvLIhX6hlO83BqogFMu5ACLcB/s640/RNN2.png" alt="圖一"><br> 下圖為網路的某一時刻輸入xt，xt是一個n維的向量，RNN的輸入是一整個序列，也就是X=[x0,x1,..xt-1,xt,xt+1,…xT]，對於語言模型，每一個xt將代表一個詞向量，一整個序列就代表一句話。ht代表時刻t的隱含狀態，yt代表時刻t的輸出。</p><p>輸入層到隱含層權重由U表示，它將原始輸入進行抽象作為隱含層的輸入。<br>隱含層到隱含層的權重為W，它是網路的記憶控制者，負責調度記憶。<br>隱含層到輸出層的權重為V，從隱含層學習到的表示將通過它再一次抽象，並作為最終輸出。</p><p>前向傳播(Forward Propagation) 依次按照時間的順序計算一次即可，反向傳播(Back Propagation)從最後一個時間將累積的殘差傳遞回來即可，跟普通的BP神經網路訓練本質上基本一樣，由於加入了時間順序，計算方式有所不同，這稱之為BPTT(Back Propagation Through Time)算法<br><img src="https://3.bp.blogspot.com/-9cz6YIf-3Wk/WQ8C-7QNnOI/AAAAAAAAI8g/iFhXR9t3ii0UE9ZRXs425wR_HYJk9i7WgCLcB/s1600/RNN1.png" alt="圖二"></p><h2 id="各種類型RNN"><a href="#各種類型RNN" class="headerlink" title="各種類型RNN"></a>各種類型RNN</h2><ul><li>依據 input 及 output 的數目，RNN 可以有很多的變化與應用：<ol><li>一對一(one to one)：固定長度的輸入(input)及輸出(output)，即一般的 Neural Network 模型。</li><li>一對多(one to many)：單一輸入、多個輸出，例如影像標題(Image Captioning)，輸入一個影像，希望偵測影像內多個物體，並一一給予標題，這稱之為『Sequence output』。</li><li>多對一(many to one)：多個輸入、單一輸出，例如情緒分析(Sentiment Analysis)，輸入一大段話，判斷這段話是正面或負面的情緒表達，這稱之為『Sequence input』。</li><li>多對多(many to many)：多個輸入、多個輸出，例如語言翻譯(Machine Translation)，輸入一段英文句子，翻譯成中文，這稱之為『Sequence input and sequence output 』。</li><li>另一種多對多(many to many)：『同步』(Synchronize)的多個輸入、多個輸出，例如視訊分類(Video Classification)，輸入一段影片，希望為每一幀(Frame)產生一個標題，這稱之為『Synced sequence input and output』。</li></ol></li></ul><p><img src="https://ithelp.ithome.com.tw/upload/images/20171210/200019764hsWa3ZvMN.jpg" alt="type of RNN"></p><h2 id="BPTT與梯度消失"><a href="#BPTT與梯度消失" class="headerlink" title="BPTT與梯度消失"></a>BPTT與梯度消失</h2><p>RNN所使用的訓練方法並不是像DNN所提到的反向傳播法(BP, Back Propagation)，而是進階版本的BPTT，因此很容易梯度消失。梯度消失是一種在訓練的時候因為梯度歸零而發現訓練沒有效果的情況。與BP不同的地方就在於BPTT是透過時間來進行訓練的。</p><div class="note modern simple"><p>那為什麼要透過時間來進行訓練呢？</p></div><p>hidden state它是用來儲存歷史訊息的小房間，而神經元會透過這些歷史訊息在特徵(權重)已經被固定的情況下，得出與時間相關的對應答案。所以其實歷史訊息和應該出現的答案之間的關係是需要被訓練的，這就是為什麼我們需要BPTT。</p><p>那為什麼RNN做BPTT會容易出現梯度消失呢？</p><div class="note modern simple"><p>因為歷史資訊太長了。</p></div><p>首先，梯度消失是因為對參數連續進行偏微分而導致數值爆炸性的縮小。你可以簡單想像是係數相乘而導致數值不斷趨近於零。</p><p>比方說，我們有那經典的一句<code>To be or not to be, that&#39;s the question.</code>。很顯然，單字的出現是一個時間相關問題(次序相關)。那麼我們應該可以用RNN來訓練。</p><p>但是如果想要學習單字跟單字之間的關係並沒有那麼容易，只是<code>To</code>跟<code>be</code>大概沒什麼問題，我們使用反向傳播訓練，只要對歷史資訊偏微分一次就可以找到他們在歷史資訊上的相關性。<br>但是<code>To</code>跟<code>question</code>呢？反向傳播法會需要連續的進行偏微分來找到<code>To</code>跟<code>question</code>之間的關係，但連續的偏微分就會導致梯度消失，這讓我們很難找到他們之間的關係。</p><p>所以在對歷史資訊做反向傳播法的時候，很容易會遇到很嚴重的梯度消失問題，你壓根沒辦法讓神經元透過hidden state的變化來找出應該有的輸出。<br>那怎麼辦呢？這裡要出動我們的救星LSTM和GRU。</p><h2 id="LSTM和GRU"><a href="#LSTM和GRU" class="headerlink" title="LSTM和GRU"></a>LSTM和GRU</h2><ol><li><p>LSTM(Long short-term memory)<br>LSTM比起原來單純的hidden state小房間，他多了三個門(gate)，分別是Input gate(輸入門)，Forget gate(遺忘門)，和Output gate(輸出門)。<br>輸入門： 決定這一次的輸入需不需要被記憶，或者要記多少(可能只有記個三成)<br>遺忘門： 決定要不要遺忘之前的hidden state，也可以按比例遺忘。<br>輸出門： 決定這一次所得到的輸出要放多少(也是比例)進去hidden state小房間。<br>這三個門的合作可以讓某些不重要單字被忽略，進而讓梯度可以順利進行遠距離的傳遞，進而完成訓練。<br>而且由於hidden state來自三個門的線性運算，這讓hidden state與歷史資訊之間呈現線性而非乘積的關係，從而避免了梯度消失。<br><img src="https://ithelp.ithome.com.tw/upload/images/20191001/20119971ToTCRtVWSu.png" alt="LSTM"></p></li><li><p>GRU(Gated recurrent unit)<br>接下來是GRU，GRU有兩個門，Reset Gate(重製門)和Update Gate(更新門)。<br>重製門： 決定是否要遺忘之前留下來的hidden state。<br>更新門： 決定這一次的hidden state所要留下來的比例。<br>所以GRU也是透過兩個門之間的線性運算來產生hidden state，這使的GRU的hidden state與歷史資訊之間同樣變成線性關係，進而避免了梯度消失。</p></li></ol><h2 id="三者比較"><a href="#三者比較" class="headerlink" title="三者比較"></a>三者比較</h2><p><img src="https://i0.wp.com/clay-atlas.com/wp-content/uploads/2020/06/rnn-family.png?w=884&ssl=1" alt="threeCompare"></p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><img src="https://medium.com/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E7%9F%A5%E8%AD%98%E6%AD%B7%E7%A8%8B/rnn-%E9%81%9E%E8%BF%B4%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF-%E5%85%A8%E9%9D%A2%E8%AA%8D%E8%AD%98-27e4dd150bdd" alt="RNN(遞迴神經網路)全面認識"><br><img src="https://ithelp.ithome.com.tw/articles/10193469" alt="Day 14：循環神經網路(Recurrent Neural Network, RNN)"><br><img src="https://arbu00.blogspot.com/2017/05/3-rnn-recurrent-neural-networks.html" alt="深度學習(3)--循環神經網絡(RNN, Recurrent Neural Networks)"><br><img src="https://ithelp.ithome.com.tw/articles/10223055" alt="[Day-16] RNN - LSTM介紹"><br><img src="https://ithelp.ithome.com.tw/articles/10194201" alt="Day 17：GRU (Gated Recurrent Unit) 概念介紹與實作"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Machine Learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> lesson note </tag>
+            
+            <tag> RNN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>自然語言處理(NLP)</title>
+      <link href="/larry891001/2022/05/28/ML/NLP/"/>
+      <url>/larry891001/2022/05/28/ML/NLP/</url>
+      
+        <content type="html"><![CDATA[<div class="note danger simple"><p>此為上課筆記</p></div><h2 id="『自然語言處理』-NLP"><a href="#『自然語言處理』-NLP" class="headerlink" title="『自然語言處理』(NLP)"></a>『自然語言處理』(NLP)</h2><ul><li>讓電腦擁有理解人類語言的能力，就是自然語言處理 (Natural Language Processing，縮寫 NLP)。</li><li>主要範疇:<ol><li>文本朗讀（Text to speech）/ 語音合成（Speech synthesis）</li><li>語音識別（Speech recognition）</li><li>自動分詞（word segmentation）</li><li>詞性標註（Part-of-speech tagging）</li><li>句法分析（Parsing）</li><li>自然語言生成（Natural language generation）</li><li>文本分類（Text categorization）</li><li>信息檢索（Information retrieval）</li><li>信息抽取（Information extraction）</li><li>文字校對（Text-proofing）</li><li>問答系統（Question answering）</li><li>機器翻譯（Machine translation）</li><li>自動摘要（Automatic summarization）</li><li>文字蘊涵（Textual entailment）</li></ol></li></ul><h2 id="語文的特性"><a href="#語文的特性" class="headerlink" title="語文的特性"></a>語文的特性</h2><p>影像相對於語文來說非常單純，人類的語言具高度曖昧性，一句話可能有不同的的意思或是隱喻，且隨著時代演進不斷變化，新詞會不斷的被創造出來，語言學家越來越難建立規則(文法及語意學)來規範語文。另外，由於語文的不規則性，在放入模型解析之前，我們通常會先對輸入的語文做前置處理(Preprocess)，包括：</p><ol><li><p>資料清理(Data Cleaning)：例如我們抓網頁資料，必須先清除 HTML 標籤(Tag)，取出乾淨的本文。</p></li><li><p>標點符號(Punctuation)：對語意沒有影響，通常會忽略他們。</p></li><li><p>分詞(Tokenize)：英文較容易，一般以空白即可，但中文就比較困難。</p></li><li><p>Stop Words：例如英文的『the』、『as』、『to』、『from』…等介係詞或助詞，他們對語文大意的瞭解可能沒有太大的幫助，通常會忽略他們。</p></li><li><p>『詞嵌入』(Word Embedding)：要交給電腦計算，將單字轉數值會比較容易處理，『詞嵌入』技術通常會將單字轉為實數，以形成連續的向量空間，比較有名的模型包括Word2Vec 及 GloVe。</p></li><li><p>相似詞整理：意義相近的單字或片語，在解析字句及分類時必須能呈現出來，Google Tomas Mikolov 創造 Word2Vec 模型，以向量(Vector)空間來定義單字(Word)。</p></li><li><p>『語料庫』(Corpus)：要能訓練模型，必須要有大量的標註資料，NLTK(Natural Language Toolkit)工具箱同時提供完整的函數庫及大量的語料庫，各式的語料庫可透過下列指令下載：</p><ul><li>安裝 NLTK 函數庫<br>pip install -U nltk</li><li>在DOS內輸入Python<br>import nltk<br>nltk.download()<br>或直接下載全部語料庫:<br>python -m nltk.downloader all</li></ul></li></ol><h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>要理解一段話，首先要從單字開始，進而到片語(Phrase)、句子(Sentence)，加上文法(Syntax)、語意(Semantics)解析，我們才能理解這一段話的意義，如果要從這樣的導向(Approach)出發，我們可能要聘請語言學專家建置龐大的『規則引擎』(Rule Engine)才行，工程浩大，所費不貲，維護成本可能也是天文數字，反之，從另一種角度思考，可否與CNN一樣，改為提供大量字句，讓機器自我學習 ?<br>如果，我們把字句當作input，餵入Neural Network模型，希望機器產生適當的回應，會有幾個問題要解決：</p><ul><li>字句有長有短，即 input 變數數目不等，回應也是一樣的狀況，output 變數數目也不等。</li><li>語文會有上下文的關係，斷章取義，常會扭曲全文代表的意義。</li><li>人類擁有記憶力，對某些人、事、物會有深度的連結，講到『川普』，可能會想到『北韓』，若機器擁有記憶力機制，預測準確率就會高很多。</li><li>針對以上的語文特性，學者提出三個解決問題的演算法，分別為『循環神經網路』(Recurrent Neural Network, RNN)、長短期記憶網路(Long Short Term Memory Network, LSTM)及 GRU (Gated Recurrent Unit)</li></ul><p><a href="">RNN</a></p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://ithelp.ithome.com.tw/articles/10193224">自然語言處理</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Machine Learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> lesson note </tag>
+            
+            <tag> NLP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode -3. Longest Substring Without Repeating Characters解題紀錄</title>
       <link href="/larry891001/2022/05/28/LeetCode/Mid/LongestSubstringWithoutRepeatingCharacters/"/>
       <url>/larry891001/2022/05/28/LeetCode/Mid/LongestSubstringWithoutRepeatingCharacters/</url>
