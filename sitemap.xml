@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.lalilaza.org/larry891001/2022/05/30/ML/RL/</loc>
+    
+    <lastmod>2022-05-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lalilaza.org/larry891001/2022/05/28/ML/NLP/</loc>
     
     <lastmod>2022-05-28</lastmod>
@@ -445,7 +454,7 @@
 
   <url>
     <loc>https://www.lalilaza.org/larry891001</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -453,119 +462,126 @@
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/classification/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Machine-Learning/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/lesson-note/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/CNN/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Confusion-Matrix/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/RNN/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/NLP/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/RL/</loc>
+    <lastmod>2022-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/RNN/</loc>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Clustering/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Data-preprocessing/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/numpy/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Pandas/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Regression/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/%E5%8B%95%E6%BC%AB/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/%E8%83%83%E7%97%9B/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Google-map-API/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/contest/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/LeetCode/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -574,49 +590,49 @@
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/categories/OpenCV/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/categories/Python/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/categories/object-detection/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/categories/Machine-Learning/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/categories/Data-Preprocessing/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/categories/Contest/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/categories/LeetCode/</loc>
-    <lastmod>2022-05-28</lastmod>
+    <lastmod>2022-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

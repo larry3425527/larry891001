@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>強化學習(Reinforcement Learning)</title>
+      <link href="/larry891001/2022/05/30/ML/RL/"/>
+      <url>/larry891001/2022/05/30/ML/RL/</url>
+      
+        <content type="html"><![CDATA[<div class="note danger simple"><p>此為上課筆記</p></div><h2 id="Reinforcement-Learning基礎概念"><a href="#Reinforcement-Learning基礎概念" class="headerlink" title="Reinforcement Learning基礎概念"></a>Reinforcement Learning基礎概念</h2><p><img src="https://miro.medium.com/max/1400/1*SXvCTwCgH_TdnPhe9mBhZw.png" alt="Scenario of Reinforcement Learning"></p><ul><li>Agent</li><li>Environment</li><li>Observation: <code>Observation</code>又稱作<code>State</code>，就是指環境的狀態，也就是Machine所觀察到的東西</li><li>Action: Machine所做出的動作就叫做<code>Action</code>，這些<code>Action</code>會影響<code>environment</code></li><li>Reward: 表示Machine做了<code>Action</code>，所得到的影響</li></ul><p>舉例來說，Machine看到一杯水，並打翻它，那就得到一個負值報酬，而因為水已經被打翻了，因此下一個時間點所看到的就是水被打翻的狀態，這時候它決定把地擦乾淨，因此得到一個正值報酬。</p><div class="note flat"><p>機器學習的目標就是根據過去的經驗讓Reward被最大化的Action。</p></div><h2 id="目前強化學習分成兩大塊："><a href="#目前強化學習分成兩大塊：" class="headerlink" title="目前強化學習分成兩大塊："></a>目前強化學習分成兩大塊：</h2><ul><li>Policy-based<br> 訓練一個負責做事的Actor</li><li>Value-based<br> 訓練一個不做事的Critic</li></ul><h2 id="Three-Steps-for-Deep-Learning"><a href="#Three-Steps-for-Deep-Learning" class="headerlink" title="Three Steps for Deep Learning"></a>Three Steps for Deep Learning</h2><p><img src="https://i.imgur.com/3Mqta3f.png" alt="Steps of Deep Learning"></p><ol><li>定義function<ul><li>NN決定function space</li><li>Actor可以是一個NN<br>  -如果Actor是NN，那就是Deep Reinforcement Learning</li></ul></li><li>決定function的好壞<ul><li>衡量Actor的好壞</li></ul></li><li>選擇最好的Actor<ul><li>利用Gradient Ascent</li></ul></li></ol><h2 id="Neural-network-as-Actor"><a href="#Neural-network-as-Actor" class="headerlink" title="Neural network as Actor"></a>Neural network as Actor</h2><p><img src="http://ai.ntu.edu.tw/aho/JPG/Introduction_of_Reinforcement_Learning/Introduction_of_Reinforcement_Learning_23.jpg" alt="NN as Actor"></p><ul><li>neural network的輸入: 也就是Machine所看到的<code>observation</code>，這<code>observation</code>可以用一個vector或matrix來描述</li><li>neural network的輸出: 現在有幾個可以採取的<code>Action</code>，代表output就會有幾個<code>dimension</code>(Policy Gradient通常假設Actor(Policy)是Stochastic(隨機)，意思就是，Policy的Output是機率，上圖為例，即是70%會left，20%會right，10%會fire。)</li></ul><div class="note flat"><p>相較於傳統作法使用table來記錄Observation與Action的對應，利用NN的優點在於它可以舉一反三，即使沒有看過的畫面，最終還是會有一個輸出。</p></div><h2 id="Goodness-of-Actor"><a href="#Goodness-of-Actor" class="headerlink" title="Goodness of Actor"></a>Goodness of Actor</h2><p><img src="https://i.imgur.com/T83CDO1.png" alt="Goodness of Actor"><br>強化學習中定義Actor的好壞也是類似的方式，Actor就是一個NN，它的參數是θ，因此我們用πθ來表示Actor</p><ul><li>Actor:πθ<ul><li>一個Actor就是一個function</li><li>input：S<ul><li>Actor看到的Observation</li></ul></li><li>Rθ：遊戲結束之後的Total Reward<ul><li>r1+r2…+rT</li><li>Total Reward就是我們要Maximize的對象<ul><li>並非優化每一個step<br>即使相同的Actor，不同的episode也會有不同的結果(每次的<br>Rθ不同)，理由如下：</li></ul></li></ul></li></ul></li></ul><ol><li>Actor採Stochastic，即使看到相同場景、相同參數也會採取不同的Action，因此每次得到的Rθ也不同</li><li>遊戲本身的隨機性，即使採取相同的Action，每次看到的Observation也不一樣，因此，Rθ本身是一個Random-Variable</li></ol><p>我們要做的並不是最大化某一次遊戲得到的Rθ，而是<code>Rθ的期望值</code>。拿同一個Actor玩了N次遊戲之後，我們希望<code>Rθ的期望值</code>愈大愈好。</p><p>這個期望值，就是用來衡量Actor的好壞。</p><h2 id="Gradient-Ascent"><a href="#Gradient-Ascent" class="headerlink" title="Gradient Ascent"></a>Gradient Ascent</h2><p><img src="https://i.imgur.com/bt1JJ7p.png" alt="Gradient Ascent"><br>我們的目標函數(Objective Function)就是找一個參數來最大化<br>¯Rθ，解法就是利用Gradient Ascent(因為我們要最大化)。</p><p>作法如下：</p><ol><li>隨機初始θ0</li><li>計算使用θ0的Actor，θ0對¯Rθ0的微分</li><li>更新參數得到θ1</li><li>計算θ1對¯Rθ1的微分</li><li>更新參數得到θ2</li><li>…</li></ol><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://hackmd.io/@shaoeChen/By4AiVywN?type=view">李宏毅_ML</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Machine Learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> lesson note </tag>
+            
+            <tag> RL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>遞迴神經網路(recurrent neural networks，RNN)</title>
       <link href="/larry891001/2022/05/28/ML/RNN/"/>
       <url>/larry891001/2022/05/28/ML/RNN/</url>
