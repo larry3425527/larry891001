@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Docker學習紀錄-1</title>
+      <link href="/larry891001/2022/07/02/docker/docker_01/"/>
+      <url>/larry891001/2022/07/02/docker/docker_01/</url>
+      
+        <content type="html"><![CDATA[<h2 id="何謂虛擬化"><a href="#何謂虛擬化" class="headerlink" title="何謂虛擬化?"></a>何謂虛擬化?</h2><ul><li><p>因為每台電腦的作業系統與硬體配置不盡相同，我的程式可能剛好只跟我電腦上的環境相容。而虛擬化要做的就是模擬出一個環境，讓程式可以在不同硬體上執行時，都以為自己在同一個環境中執行。</p></li><li><p>目前常見用來比較的虛擬化技術有兩種，一種是在系統層級的虛擬化技術，在這我們叫它稱虛擬機器（Virtual machine）。另外一種則是在作業系統層級，此稱容器（Container）。前者的代表如Virtual Box，而後者如Docker。</p></li></ul><h2 id="虛擬機器-v-s-容器"><a href="#虛擬機器-v-s-容器" class="headerlink" title="虛擬機器 v.s. 容器"></a>虛擬機器 v.s. 容器</h2><ul><li><p>虛擬機器（以作業系統為中心）</p><ul><li>虛擬化的目標：將一個應用程式所需的執行環境打包起來，建立一個獨立環境，方便在不同的硬體中移動。<br>虛擬機器是在系統層上虛擬化，透過 Hypervisor 在目標的機器上提供可以執行一個或多個虛擬機器的平台。而這些虛擬機器可以執行完整的作業系統。簡單來說，Hypervisor 就是一個可以讓你在作業系統（Host OS）上面再裝一個作業系統（Guest OS），然後讓兩個作業系統彼此不會打架的平台。</li><li>透過選擇不同的 Guest OS，虛擬機器的技術就可以確保只要我的程式在該 Guest OS 上可以正常運作，那放到你的電腦上跑時，可以不管你的 Host OS 是什麼，只要在你的 Host OS 上先裝上我的 Guest OS，我的程式就可以正常在你的電腦上運作。</li></ul></li><li><p>容器（以應用程式為中心）</p><ul><li>容器化的目標：改善虛擬機器因為需要裝 Guest OS 導致啟動慢、佔較大記憶體的問題。<br>容器是在作業系統層上虛擬化，透過 Container Manager 直接將一個應用程式所需的程式碼、函式庫打包，建立資源控管機制隔離各個容器，並分配 Host OS 上的系統資源。透過容器，應用程式不需要再另外安裝作業系統（Guest OS）也可以執行。</li><li>因為不需要另外安裝作業系統，建立容器所需要的硬碟容量可以大幅降低，且啟動速度可以更快，不需要等待 Guest OS 的開機時間。</li></ul></li></ul><h2 id="為什麼要用Docker"><a href="#為什麼要用Docker" class="headerlink" title="為什麼要用Docker?"></a>為什麼要用Docker?</h2><ul><li>由於傳統虛擬機器(Virtual Machine)因為需要額外安裝作業系統（Guest OS），導致啟動慢、佔較大記憶體的問題</li><li>Docker 要提供的解法以應用程式為核心虛擬化，取代傳統需要 Guest OS 的虛擬化技術</li></ul><h2 id="Docker-三個基本概念"><a href="#Docker-三個基本概念" class="headerlink" title="Docker 三個基本概念"></a>Docker 三個基本概念</h2><ul><li>映像檔（Image）<ul><li>Docker 映像檔就是一個唯讀的模板。</li><li>映像檔可以用來建立 Docker 容器。</li></ul></li><li>容器（Container）<ul><li>容器是從映像檔建立的執行實例。</li><li>Docker 利用容器來執行應用。</li><li>可以被啟動、開始、停止、刪除。</li><li>每個容器都是相互隔離的、保證安全的平台。</li></ul></li><li>倉庫（Repository）<ul><li>倉庫是集中存放映像檔檔案的場所。</li><li>每個倉庫中又包含了多個映像檔。</li><li>每個映像檔有不同的標籤（tag）。</li><li>倉庫分為公開倉庫（Public）和私有倉庫（Private）兩種形式。</li></ul></li></ul><h2 id="Image-映像檔-常用指令"><a href="#Image-映像檔-常用指令" class="headerlink" title="Image 映像檔 常用指令"></a>Image 映像檔 常用指令</h2><table><thead><tr><th align="left">指令</th><th align="left">說明</th><th align="left">範例</th></tr></thead><tbody><tr><td align="left">search</td><td align="left">搜尋</td><td align="left">docker search centos</td></tr><tr><td align="left">pull</td><td align="left">下載</td><td align="left">docker pull centos</td></tr><tr><td align="left">images</td><td align="left">列表</td><td align="left">docker images</td></tr><tr><td align="left">run</td><td align="left">執行</td><td align="left">docker run -ti centos /bin/bash</td></tr><tr><td align="left">rmi [Image ID]</td><td align="left">刪除</td><td align="left">docker rmi 615cb40d5d19</td></tr><tr><td align="left">build</td><td align="left">建立</td><td align="left">docker build -t member:1 .</td></tr><tr><td align="left">login</td><td align="left">登入</td><td align="left">docker login docker.okborn.com</td></tr><tr><td align="left">push</td><td align="left">上傳</td><td align="left">docker push</td></tr></tbody></table><h2 id="Container-容器-常用指令"><a href="#Container-容器-常用指令" class="headerlink" title="Container 容器 常用指令"></a>Container 容器 常用指令</h2><table><thead><tr><th align="left">指令</th><th align="left">說明</th><th align="left">範例</th></tr></thead><tbody><tr><td align="left">run</td><td align="left">新建或啟動</td><td align="left">docker run -d centos</td></tr><tr><td align="left">start [Contain ID]</td><td align="left">啟動</td><td align="left">docker start a469b9226fc8</td></tr><tr><td align="left">stop [Contain ID]</td><td align="left">停止</td><td align="left">docker stop a469b9226fc8</td></tr><tr><td align="left">rm [Contain ID]</td><td align="left">刪除</td><td align="left">docker rm a4</td></tr><tr><td align="left">ps -a</td><td align="left">列表</td><td align="left">docker ps -a</td></tr><tr><td align="left">logs [Contain ID]</td><td align="left">查看容器內的資訊</td><td align="left">docker logs -f a4</td></tr><tr><td align="left">exec [Contain ID]</td><td align="left">進入容器(開新console)</td><td align="left">docker exec -ti a4 /bin/bash</td></tr><tr><td align="left">attach</td><td align="left">進入容器(退出停止容器)</td><td align="left">dockr attach a4</td></tr><tr><td align="left">inspect</td><td align="left">查看</td><td align="left">docker inspect a4</td></tr></tbody></table><h2 id="Registry-倉庫-常用指令"><a href="#Registry-倉庫-常用指令" class="headerlink" title="Registry 倉庫 常用指令"></a>Registry 倉庫 常用指令</h2><table><thead><tr><th align="left">指令</th><th align="left">說明</th><th align="left">範例</th></tr></thead><tbody><tr><td align="left">commit</td><td align="left">容器存檔</td><td align="left">docker commit db aaa:v1</td></tr><tr><td align="left">pull</td><td align="left">下載</td><td align="left">docker pull docker.okborn.com/okborn:base</td></tr><tr><td align="left">tag</td><td align="left">標籤</td><td align="left">docker tag aaa docker.okborn.com/aaa</td></tr><tr><td align="left">push</td><td align="left">上傳</td><td align="left">docker push docker.okborn.com/member:1</td></tr><tr><td align="left">login</td><td align="left">登入</td><td align="left">docker login docker.okborn.com</td></tr><tr><td align="left">export</td><td align="left">匯出</td><td align="left">docker export 7691a814370e &gt; ubuntu.tar</td></tr><tr><td align="left">import</td><td align="left">匯入</td><td align="left">cat ubuntu.tar sudo docker import - test/ubuntu:v1.0</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode -1465. Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts解題紀錄</title>
       <link href="/larry891001/2022/07/01/LeetCode/Mid/1465/"/>
       <url>/larry891001/2022/07/01/LeetCode/Mid/1465/</url>
