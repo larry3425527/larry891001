@@ -54,6 +54,33 @@
     
     
     <entry>
+      <title>Docker學習紀錄-建立python image</title>
+      <link href="/larry891001/2022/07/04/docker/docker_02/"/>
+      <url>/larry891001/2022/07/04/docker/docker_02/</url>
+      
+        <content type="html"><![CDATA[<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><h4 id="Pull所需Python-image"><a href="#Pull所需Python-image" class="headerlink" title="Pull所需Python image"></a>Pull所需Python image</h4><ul><li>到<code>Docker Hub</code>找到所需要的Python image，並下載到本地(這裡以3.9.7為例)</li><li><code>$ sudo docker pull python:3.9.7-alpine3.13</code><!-- ![DockerHub](https://img.onl/35m3Fs) --></li></ul><h4 id="運行"><a href="#運行" class="headerlink" title="運行"></a>運行</h4><ul><li><code>$ sudo docker container run --rm -it python:3.9.7-alpine3.13</code></li><li><code>--rm</code>表示運行完容器之後，就將它刪除</li><li><code>-it</code>交互式的命令行方式</li></ul><h4 id="確認Python、Pip、Linux的版本號"><a href="#確認Python、Pip、Linux的版本號" class="headerlink" title="確認Python、Pip、Linux的版本號"></a>確認Python、Pip、Linux的版本號</h4><ul><li><code>$ sudo docker container run --rm -it python:3.9.7-alpine3.13 python -V</code></li><li><code>$ sudo docker container run --rm -it python:3.9.7-alpine3.13 pip -V</code></li><li><code>$ sudo docker container run --rm -it python:3.9.7-alpine3.13 cat /etc/os-release</code></li></ul><h4 id="main-py"><a href="#main-py" class="headerlink" title="main.py"></a>main.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">myarray = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(myarray)</span><br></pre></td></tr></table></figure><h4 id="執行本地的Python應用"><a href="#執行本地的Python應用" class="headerlink" title="執行本地的Python應用"></a>執行本地的Python應用</h4><ul><li>$ sudo docker container run –rm -it <code>\</code><br>-v {所在資料夾}:/workfolder:ro <code>\</code><br>python:3.9.7-alpine3.13 <code>\</code><br>python /workfolder/main.py</li><li>(運行容器)<br>(將本地的資料夾映射到<code>container</code>裡面的<code>workfolder</code>資料夾並且設成<code>ro</code>唯讀屬性)<br>(指定要運行的<code>image</code>)<br>(運行<code>image</code>裡面的<code>python</code>程序)</li><li>但由於上面的環境並沒有<code>numpy</code>，所以會報錯</li></ul><h4 id="建立Dockerfile"><a href="#建立Dockerfile" class="headerlink" title="建立Dockerfile"></a>建立Dockerfile</h4><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.9</span>.<span class="number">7</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> pip3 install numpy</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> mkdir -p /workfolder</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> ./main.py /workfolder/</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;python&quot;</span>,<span class="string">&quot;/workfolder/main.py&quot;</span>]</span></span><br></pre></td></tr></table></figure><ul><li><code>aipline</code>為<code>musl libc</code>的核心，雖然小巧，但有一部份功能受限，若要安裝<code>Python</code>的第三方套件，需要透過<code>UnixCCompiler</code>編譯才可通過</li></ul><h4 id="建立Python應用鏡像"><a href="#建立Python應用鏡像" class="headerlink" title="建立Python應用鏡像"></a>建立Python應用鏡像</h4><ul><li><code>&amp; sudo docker image build -t 名稱:標籤</code></li><li><code>-t</code>為加標籤</li></ul><h4 id="運行-1"><a href="#運行-1" class="headerlink" title="運行"></a>運行</h4><ul><li><code>$ sudo docker container run --rm -it 名稱:標籤</code></li></ul><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.youtube.com/watch?v=MgUV_Alr42g&list=PLliocbKHJNwubNT2oK-xlB1GXTXuLFb0I&index=6">小馬Docker教學</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Docker學習紀錄-基本概念</title>
       <link href="/larry891001/2022/07/02/docker/docker_01/"/>
       <url>/larry891001/2022/07/02/docker/docker_01/</url>
