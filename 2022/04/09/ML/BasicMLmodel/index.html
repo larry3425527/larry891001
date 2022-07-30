@@ -152,9 +152,9 @@ gtag('config', 'G-472VR63SXM');
 <h1 id="Decision-Tree-決策樹"><a href="#Decision-Tree-決策樹" class="headerlink" title="Decision Tree(決策樹)"></a>Decision Tree(決策樹)</h1><p>決策樹會根據訓練資料產生一棵樹，依據訓練出來的規則來對新樣本進行預測。決策樹演算法可以使用不同的方式來評估分枝的好壞(亂度)，例如像是Information gain、Gain ratio、Gini index。依據訓練資料找出合適的規則，最終生成一個規則樹來決策所有事情，其目的使每一個決策能夠使訊息增益最大化。就好比我們評估今天比賽是否舉行，天氣因子可能佔比較大的因素，而Co2的濃度高低可能佔的因子程度較低。因此在第一層的決策中以天氣的特徵先進行第一次的決策判斷。接著第二層再從所有特徵中尋找最適合的決策因子，直到設定的最大樹的深度即停止樹的生長。<br><img src="https://ithelp.ithome.com.tw/upload/images/20210924/201072476CHqRkXf16.png" alt="Decision Tree"></p>
 <h2 id="決策樹如何生成"><a href="#決策樹如何生成" class="headerlink" title="決策樹如何生成?"></a>決策樹如何生成?</h2><p>決策樹是以一個<code>Greedy Algorithm</code>來決定每一層要問什麼問題，目標是分類過後每一群能夠很明顯的知道是屬於哪一種類別。延續上面的例子，以分類問題來說假設要評估明天比賽是否舉行。在樹的第一層節點中我們要從已知的兩個特徵分別是溫度與特徵選一個作為該層的決策因子。假設目前訓練集有五筆資料，其中正常舉行的有兩筆資料，取消舉行的有三筆資料。在樹的結構中左子樹為決策正常舉行，而右子樹是決策取消舉行。我們可以發現當特徵為天氣的時候可以一很清楚的將這兩類別完整分開，因此我們會將天氣作為這一層判斷的因子。這就是決策樹在生成中的貪婪機制。然而要如何去判斷每次決策的好壞，就必須依靠亂度的評估指標。<br><img src="https://ithelp.ithome.com.tw/upload/images/20210924/20107247ZEfzbnhMZY.png" alt="Example"></p>
 <h2 id="決策樹何時停止生長"><a href="#決策樹何時停止生長" class="headerlink" title="決策樹何時停止生長"></a>決策樹何時停止生長</h2><ul>
-<li>All samples for a given node belong to the same class</li>
-<li>There are no remaining attributes for further partitioning – majority<br>voting is employed for classifying the leaf</li>
-<li>There are no samples left</li>
+<li> All samples for a given node belong to the same class</li>
+<li> There are no remaining attributes for further partitioning – majority<br>voting is employed for classifying the leaf</li>
+<li> There are no samples left</li>
 </ul>
 <h2 id="決策樹的建構議題"><a href="#決策樹的建構議題" class="headerlink" title="決策樹的建構議題"></a>決策樹的建構議題</h2><ol>
 <li>分裂的準則 Split criterion (goodness function)<ul>
@@ -208,11 +208,13 @@ gtag('config', 'G-472VR63SXM');
 </ol>
 <h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><ol>
 <li>定義大小為n的隨機樣本（這裡指的是用bagging方法），就是從資料集中隨機選取n個資料，取完後放回。</li>
-<li>從選取的n個資料中，訓練出決策樹。對每一個節點：<ul>
+<li>從選取的n個資料中，訓練出決策樹。對每一個節點：</li>
+</ol>
+<ul>
 <li>隨機選取d個特徵</li>
 <li>使用特徵分割該節點（信息增益，information gain）</li>
 </ul>
-</li>
+<ol start="3">
 <li>重複k次步驟1~步驟2</li>
 <li>匯總所有決策樹的預測，以多數決的方式，來決定分類結果。</li>
 </ol>
