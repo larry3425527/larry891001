@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/2022/08/03/%E9%9B%9C7%E9%9B%9C8/SwaggerUI/</loc>
+    <loc>https://www.lalilaza.org/larry891001/2022/07/04/docker/docker_python/</loc>
     
     <lastmod>2022-08-04</lastmod>
     
@@ -13,16 +13,16 @@
   <url>
     <loc>https://www.lalilaza.org/larry891001/2022/07/29/docker/docker_yolo/</loc>
     
-    <lastmod>2022-07-30</lastmod>
+    <lastmod>2022-08-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/2022/07/04/docker/docker_python/</loc>
+    <loc>https://www.lalilaza.org/larry891001/2022/08/03/%E9%9B%9C7%E9%9B%9C8/SwaggerUI/</loc>
     
-    <lastmod>2022-07-29</lastmod>
+    <lastmod>2022-08-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -697,20 +697,6 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Google-map-API/</loc>
-    <lastmod>2022-08-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/contest/</loc>
-    <lastmod>2022-08-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lalilaza.org/larry891001/tags/%E5%8B%95%E6%BC%AB/</loc>
     <lastmod>2022-08-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -733,6 +719,20 @@
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Swagger/</loc>
+    <lastmod>2022-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/Google-map-API/</loc>
+    <lastmod>2022-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/contest/</loc>
     <lastmod>2022-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -790,14 +790,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/Contest/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/%E9%9B%9C7%E9%9B%9C8/</loc>
     <lastmod>2022-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/%E9%9B%9C7%E9%9B%9C8/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/Contest/</loc>
     <lastmod>2022-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

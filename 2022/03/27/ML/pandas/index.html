@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pandas | La哩La渣</title><meta name="keywords" content="Machine Learning,lesson note,Data preprocessing,Pandas"><meta name="author" content="larry"><meta name="copyright" content="larry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="此為上課筆記  Pandas的基礎 Pandas是在用Python建立模型之前進行資料預處理的便利函式庫。 Pandas可對各式各樣的資料進行有彈性地加工處理，執行表格試算與資料抽出、搜尋等操作。  Pandas函式庫的匯入12import pandas as pdfrom pandas import Series, DataFrame  匯入Pandas函式庫 匯入處理1維陣列的Series函式">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pandas | La哩La渣</title><meta name="keywords" content="Machine Learning,lesson note,Data preprocessing,Pandas"><meta name="author" content="larry"><meta name="copyright" content="larry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="此為上課筆記   Pandas的基礎 Pandas是在用Python建立模型之前進行資料預處理的便利函式庫。 Pandas可對各式各樣的資料進行有彈性地加工處理，執行表格試算與資料抽出、搜尋等操作。  Pandas函式庫的匯入12import pandas as pdfrom pandas import Series, DataFrame  匯入Pandas函式庫 匯入處理1維陣列的Series函">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pandas">
 <meta property="og:url" content="https://www.lalilaza.org/larry891001/2022/03/27/ML/pandas/index.html">
 <meta property="og:site_name" content="La哩La渣">
-<meta property="og:description" content="此為上課筆記  Pandas的基礎 Pandas是在用Python建立模型之前進行資料預處理的便利函式庫。 Pandas可對各式各樣的資料進行有彈性地加工處理，執行表格試算與資料抽出、搜尋等操作。  Pandas函式庫的匯入12import pandas as pdfrom pandas import Series, DataFrame  匯入Pandas函式庫 匯入處理1維陣列的Series函式">
+<meta property="og:description" content="此為上課筆記   Pandas的基礎 Pandas是在用Python建立模型之前進行資料預處理的便利函式庫。 Pandas可對各式各樣的資料進行有彈性地加工處理，執行表格試算與資料抽出、搜尋等操作。  Pandas函式庫的匯入12import pandas as pdfrom pandas import Series, DataFrame  匯入Pandas函式庫 匯入處理1維陣列的Series函">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg">
 <meta property="article:published_time" content="2022-03-27T11:08:46.835Z">
@@ -149,6 +149,7 @@ gtag('config', 'G-472VR63SXM');
       }
     })(window)</script><script src="/live2d-widget/autoload.js"></script><link rel="stylesheet" href="/css/tag-diy.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://img.ruten.com.tw/s1/d/5a/27/21644218247719_383.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/archives/"><div class="headline">Articles</div><div class="length-num">61</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/tags/"><div class="headline">Tags</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/larry891001/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/larry891001/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/larry891001/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/larry891001/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/larry891001/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/larry891001/">La哩La渣</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/larry891001/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/larry891001/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/larry891001/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/larry891001/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/larry891001/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Pandas</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-03-27T11:08:46.835Z" title="Created 2022-03-27 03:08:46">2022-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-04-08T09:11:50.382Z" title="Updated 2022-04-08 01:11:50">2022-04-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/larry891001/categories/Data-Preprocessing/">Data Preprocessing</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Pandas"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note danger simple"><p>此為上課筆記</p>
 </div>
+
 <h2 id="Pandas的基礎"><a href="#Pandas的基礎" class="headerlink" title="Pandas的基礎"></a>Pandas的基礎</h2><ul>
 <li>Pandas是在用Python建立模型之前進行資料預處理的便利函式庫。</li>
 <li>Pandas可對各式各樣的資料進行有彈性地加工處理，執行表格試算與資料抽出、搜尋等操作。</li>
@@ -180,203 +181,188 @@ gtag('config', 'G-472VR63SXM');
 <ul>
 <li>一般</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Index</th>
-<th style="text-align:right">ID</th>
-<th style="text-align:right">City</th>
-<th style="text-align:right">Birth_year</th>
-<th style="text-align:right">Name</th>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">City</th>
+<th align="right">Birth_year</th>
+<th align="right">Name</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">0</td>
-<td style="text-align:right">100</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">1990</td>
-<td style="text-align:right">Sally</td>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">100</td>
+<td align="right">Taipei</td>
+<td align="right">1990</td>
+<td align="right">Sally</td>
 </tr>
 <tr>
-<td style="text-align:right">1</td>
-<td style="text-align:right">101</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">1989</td>
-<td style="text-align:right">Hanks</td>
+<td align="right">1</td>
+<td align="right">101</td>
+<td align="right">Taipei</td>
+<td align="right">1989</td>
+<td align="right">Hanks</td>
 </tr>
 <tr>
-<td style="text-align:right">2</td>
-<td style="text-align:right">102</td>
-<td style="text-align:right">Hsinchu</td>
-<td style="text-align:right">1992</td>
-<td style="text-align:right">Hannah</td>
+<td align="right">2</td>
+<td align="right">102</td>
+<td align="right">Hsinchu</td>
+<td align="right">1992</td>
+<td align="right">Hannah</td>
 </tr>
 <tr>
-<td style="text-align:right">3</td>
-<td style="text-align:right">103</td>
-<td style="text-align:right">Tainan</td>
-<td style="text-align:right">1997</td>
-<td style="text-align:right">Kitty</td>
+<td align="right">3</td>
+<td align="right">103</td>
+<td align="right">Tainan</td>
+<td align="right">1997</td>
+<td align="right">Kitty</td>
 </tr>
 <tr>
-<td style="text-align:right">4</td>
-<td style="text-align:right">104</td>
-<td style="text-align:right">Kaohsiung</td>
-<td style="text-align:right">1982</td>
-<td style="text-align:right">Steve</td>
+<td align="right">4</td>
+<td align="right">104</td>
+<td align="right">Kaohsiung</td>
+<td align="right">1982</td>
+<td align="right">Steve</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li>轉置後</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Index</th>
-<th style="text-align:right">0</th>
-<th style="text-align:right">1</th>
-<th style="text-align:right">2</th>
-<th style="text-align:right">3</th>
-<th style="text-align:right">4</th>
+<th align="right">Index</th>
+<th align="right">0</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">ID</td>
-<td style="text-align:right">100</td>
-<td style="text-align:right">101</td>
-<td style="text-align:right">102</td>
-<td style="text-align:right">103</td>
-<td style="text-align:right">104</td>
+<tbody><tr>
+<td align="right">ID</td>
+<td align="right">100</td>
+<td align="right">101</td>
+<td align="right">102</td>
+<td align="right">103</td>
+<td align="right">104</td>
 </tr>
 <tr>
-<td style="text-align:right">City</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">Hsinchu</td>
-<td style="text-align:right">Tainan</td>
-<td style="text-align:right">Kaohsiung</td>
+<td align="right">City</td>
+<td align="right">Taipei</td>
+<td align="right">Taipei</td>
+<td align="right">Hsinchu</td>
+<td align="right">Tainan</td>
+<td align="right">Kaohsiung</td>
 </tr>
 <tr>
-<td style="text-align:right">Birth_year</td>
-<td style="text-align:right">1990</td>
-<td style="text-align:right">1989</td>
-<td style="text-align:right">1992</td>
-<td style="text-align:right">1997</td>
-<td style="text-align:right">1982</td>
+<td align="right">Birth_year</td>
+<td align="right">1990</td>
+<td align="right">1989</td>
+<td align="right">1992</td>
+<td align="right">1997</td>
+<td align="right">1982</td>
 </tr>
 <tr>
-<td style="text-align:right">Name</td>
-<td style="text-align:right">Sally</td>
-<td style="text-align:right">Hanks</td>
-<td style="text-align:right">Hannah</td>
-<td style="text-align:right">Kitty</td>
-<td style="text-align:right">Steve</td>
+<td align="right">Name</td>
+<td align="right">Sally</td>
+<td align="right">Hanks</td>
+<td align="right">Hannah</td>
+<td align="right">Kitty</td>
+<td align="right">Steve</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3 id="只取出特定行-amp-資料過濾"><a href="#只取出特定行-amp-資料過濾" class="headerlink" title="只取出特定行&amp;資料過濾"></a>只取出特定行&amp;資料過濾</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#取得Birth_year行</span></span><br><span class="line">attri_data_frame1.Birth_year</span><br><span class="line"><span class="comment">#取得ID與Birth_year行</span></span><br><span class="line">attri_data_frame1[[<span class="string">&#x27;ID&#x27;</span>,<span class="string">&#x27;Birth_year&#x27;</span>]]</span><br><span class="line"><span class="comment">#對於DataFrame物件，也能只取出滿足特定條件的資料，或是結合多筆資料 =&gt; 如同過濾器(filter)。</span></span><br><span class="line"><span class="comment"># attri_data_frame1中找出City為Taipei的資料</span></span><br><span class="line">attri_data_frame1[attri_data_frame1[<span class="string">&#x27;City&#x27;</span>]==<span class="string">&#x27;Taipei&#x27;</span>]</span><br><span class="line"><span class="comment"># 若是將”City行”的元素逐一和”Taipei”進行比較，取出單獨顯示，就可以看出是True還是False</span></span><br><span class="line">attri_data_frame1[<span class="string">&#x27;City&#x27;</span>] == <span class="string">&#x27;Taipei&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="DataFrame中行列的刪除"><a href="#DataFrame中行列的刪除" class="headerlink" title="DataFrame中行列的刪除"></a>DataFrame中行列的刪除</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#去掉Birth_year這一行</span></span><br><span class="line">attri_data_frame1.drop([<span class="string">&#x27;Birth_year&#x27;</span>], axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">attri_data1 = &#123;<span class="string">&#x27;ID&#x27;</span>:[<span class="string">&#x27;100&#x27;</span>,<span class="string">&#x27;101&#x27;</span>,<span class="string">&#x27;102&#x27;</span>,<span class="string">&#x27;103&#x27;</span>,<span class="string">&#x27;104&#x27;</span>],</span><br><span class="line">               <span class="string">&#x27;City&#x27;</span>:[<span class="string">&#x27;Taipei&#x27;</span>,<span class="string">&#x27;Taipei&#x27;</span>,<span class="string">&#x27;Hsinchu&#x27;</span>,<span class="string">&#x27;Tainan&#x27;</span>,<span class="string">&#x27;Kaohsiung&#x27;</span>],</span><br><span class="line">               <span class="string">&#x27;Birth_year&#x27;</span>:[<span class="number">1990</span>,<span class="number">1989</span>,<span class="number">1992</span>,<span class="number">1997</span>,<span class="number">1982</span>],</span><br><span class="line">               <span class="string">&#x27;Name&#x27;</span>:[<span class="string">&#x27;Sally&#x27;</span>,<span class="string">&#x27;Hanks&#x27;</span>,<span class="string">&#x27;Hannah&#x27;</span>,<span class="string">&#x27;Kitty&#x27;</span>,<span class="string">&#x27;Steve&#x27;</span>]&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">attri_data_frame1 = DataFrame(attri_data1)</span><br><span class="line"><span class="built_in">print</span>(attri_data_frame1)</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用assign，使得attri_data_frame1的資料中真正拿掉Birth_year行</span></span><br><span class="line"><span class="comment">#輸入程式碼</span></span><br><span class="line">attri_data_frame1 = attri_data_frame1.drop([<span class="string">&#x27;Birth_year&#x27;</span>], axis = <span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(attri_data_frame1)</span><br></pre></td></tr></table></figure>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Index</th>
-<th style="text-align:right">ID</th>
-<th style="text-align:right">City</th>
-<th style="text-align:right">Birth_year</th>
-<th style="text-align:right">Name</th>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">City</th>
+<th align="right">Birth_year</th>
+<th align="right">Name</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">0</td>
-<td style="text-align:right">100</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">1990</td>
-<td style="text-align:right">Sally</td>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">100</td>
+<td align="right">Taipei</td>
+<td align="right">1990</td>
+<td align="right">Sally</td>
 </tr>
 <tr>
-<td style="text-align:right">1</td>
-<td style="text-align:right">101</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">1989</td>
-<td style="text-align:right">Hanks</td>
+<td align="right">1</td>
+<td align="right">101</td>
+<td align="right">Taipei</td>
+<td align="right">1989</td>
+<td align="right">Hanks</td>
 </tr>
 <tr>
-<td style="text-align:right">2</td>
-<td style="text-align:right">102</td>
-<td style="text-align:right">Hsinchu</td>
-<td style="text-align:right">1992</td>
-<td style="text-align:right">Hannah</td>
+<td align="right">2</td>
+<td align="right">102</td>
+<td align="right">Hsinchu</td>
+<td align="right">1992</td>
+<td align="right">Hannah</td>
 </tr>
 <tr>
-<td style="text-align:right">3</td>
-<td style="text-align:right">103</td>
-<td style="text-align:right">Tainan</td>
-<td style="text-align:right">1997</td>
-<td style="text-align:right">Kitty</td>
+<td align="right">3</td>
+<td align="right">103</td>
+<td align="right">Tainan</td>
+<td align="right">1997</td>
+<td align="right">Kitty</td>
 </tr>
 <tr>
-<td style="text-align:right">4</td>
-<td style="text-align:right">104</td>
-<td style="text-align:right">Kaohsiung</td>
-<td style="text-align:right">1982</td>
-<td style="text-align:right">Steve</td>
+<td align="right">4</td>
+<td align="right">104</td>
+<td align="right">Kaohsiung</td>
+<td align="right">1982</td>
+<td align="right">Steve</td>
 </tr>
-</tbody>
-</table>
-</div>
-<div class="table-container">
+</tbody></table>
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Index</th>
-<th style="text-align:right">ID</th>
-<th style="text-align:right">City</th>
-<th style="text-align:right">Name</th>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">City</th>
+<th align="right">Name</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">0</td>
-<td style="text-align:right">100</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">Sally</td>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">100</td>
+<td align="right">Taipei</td>
+<td align="right">Sally</td>
 </tr>
 <tr>
-<td style="text-align:right">1</td>
-<td style="text-align:right">101</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">Hanks</td>
+<td align="right">1</td>
+<td align="right">101</td>
+<td align="right">Taipei</td>
+<td align="right">Hanks</td>
 </tr>
 <tr>
-<td style="text-align:right">2</td>
-<td style="text-align:right">102</td>
-<td style="text-align:right">Hsinchu</td>
-<td style="text-align:right">Hannah</td>
+<td align="right">2</td>
+<td align="right">102</td>
+<td align="right">Hsinchu</td>
+<td align="right">Hannah</td>
 </tr>
 <tr>
-<td style="text-align:right">3</td>
-<td style="text-align:right">103</td>
-<td style="text-align:right">Tainan</td>
-<td style="text-align:right">Kitty</td>
+<td align="right">3</td>
+<td align="right">103</td>
+<td align="right">Tainan</td>
+<td align="right">Kitty</td>
 </tr>
 <tr>
-<td style="text-align:right">4</td>
-<td style="text-align:right">104</td>
-<td style="text-align:right">Kaohsiung</td>
-<td style="text-align:right">Steve</td>
+<td align="right">4</td>
+<td align="right">104</td>
+<td align="right">Kaohsiung</td>
+<td align="right">Steve</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3 id="DataFrame資料的結合"><a href="#DataFrame資料的結合" class="headerlink" title="DataFrame資料的結合"></a>DataFrame資料的結合</h3><ul>
 <li>DataFrame物件之間可以結合。</li>
 <li>資料分析裡有各式各樣的資料，經常會將他們結合進行分析。</li>
@@ -386,160 +372,148 @@ gtag('config', 'G-472VR63SXM');
 <ul>
 <li>attri_data_frame1</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Index</th>
-<th style="text-align:right">ID</th>
-<th style="text-align:right">City</th>
-<th style="text-align:right">Birth_year</th>
-<th style="text-align:right">Name</th>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">City</th>
+<th align="right">Birth_year</th>
+<th align="right">Name</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">0</td>
-<td style="text-align:right">100</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">1990</td>
-<td style="text-align:right">Sally</td>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">100</td>
+<td align="right">Taipei</td>
+<td align="right">1990</td>
+<td align="right">Sally</td>
 </tr>
 <tr>
-<td style="text-align:right">1</td>
-<td style="text-align:right">101</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">1989</td>
-<td style="text-align:right">Hanks</td>
+<td align="right">1</td>
+<td align="right">101</td>
+<td align="right">Taipei</td>
+<td align="right">1989</td>
+<td align="right">Hanks</td>
 </tr>
 <tr>
-<td style="text-align:right">2</td>
-<td style="text-align:right">102</td>
-<td style="text-align:right">Hsinchu</td>
-<td style="text-align:right">1992</td>
-<td style="text-align:right">Hannah</td>
+<td align="right">2</td>
+<td align="right">102</td>
+<td align="right">Hsinchu</td>
+<td align="right">1992</td>
+<td align="right">Hannah</td>
 </tr>
 <tr>
-<td style="text-align:right">3</td>
-<td style="text-align:right">103</td>
-<td style="text-align:right">Tainan</td>
-<td style="text-align:right">1997</td>
-<td style="text-align:right">Kitty</td>
+<td align="right">3</td>
+<td align="right">103</td>
+<td align="right">Tainan</td>
+<td align="right">1997</td>
+<td align="right">Kitty</td>
 </tr>
 <tr>
-<td style="text-align:right">4</td>
-<td style="text-align:right">104</td>
-<td style="text-align:right">Kaohsiung</td>
-<td style="text-align:right">1982</td>
-<td style="text-align:right">Steve</td>
+<td align="right">4</td>
+<td align="right">104</td>
+<td align="right">Kaohsiung</td>
+<td align="right">1982</td>
+<td align="right">Steve</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li>attri_data_frame2</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Index</th>
-<th style="text-align:right">ID</th>
-<th style="text-align:right">Math</th>
-<th style="text-align:right">English</th>
-<th style="text-align:right">Sex</th>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">Math</th>
+<th align="right">English</th>
+<th align="right">Sex</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">0</td>
-<td style="text-align:right">100</td>
-<td style="text-align:right">50</td>
-<td style="text-align:right">90</td>
-<td style="text-align:right">M</td>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">100</td>
+<td align="right">50</td>
+<td align="right">90</td>
+<td align="right">M</td>
 </tr>
 <tr>
-<td style="text-align:right">1</td>
-<td style="text-align:right">101</td>
-<td style="text-align:right">43</td>
-<td style="text-align:right">30</td>
-<td style="text-align:right">F</td>
+<td align="right">1</td>
+<td align="right">101</td>
+<td align="right">43</td>
+<td align="right">30</td>
+<td align="right">F</td>
 </tr>
 <tr>
-<td style="text-align:right">2</td>
-<td style="text-align:right">102</td>
-<td style="text-align:right">33</td>
-<td style="text-align:right">20</td>
-<td style="text-align:right">F</td>
+<td align="right">2</td>
+<td align="right">102</td>
+<td align="right">33</td>
+<td align="right">20</td>
+<td align="right">F</td>
 </tr>
 <tr>
-<td style="text-align:right">3</td>
-<td style="text-align:right">105</td>
-<td style="text-align:right">76</td>
-<td style="text-align:right">50</td>
-<td style="text-align:right">M</td>
+<td align="right">3</td>
+<td align="right">105</td>
+<td align="right">76</td>
+<td align="right">50</td>
+<td align="right">M</td>
 </tr>
 <tr>
-<td style="text-align:right">4</td>
-<td style="text-align:right">107</td>
-<td style="text-align:right">98</td>
-<td style="text-align:right">30</td>
-<td style="text-align:right">M</td>
+<td align="right">4</td>
+<td align="right">107</td>
+<td align="right">98</td>
+<td align="right">30</td>
+<td align="right">M</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li>Merge後</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Index</th>
-<th style="text-align:right">ID</th>
-<th style="text-align:right">City</th>
-<th style="text-align:right">Birth_year</th>
-<th style="text-align:right">Name</th>
-<th style="text-align:right">Math</th>
-<th style="text-align:right">English</th>
-<th style="text-align:right">Sex</th>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">City</th>
+<th align="right">Birth_year</th>
+<th align="right">Name</th>
+<th align="right">Math</th>
+<th align="right">English</th>
+<th align="right">Sex</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">0</td>
-<td style="text-align:right">100</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">1990</td>
-<td style="text-align:right">Sally</td>
-<td style="text-align:right">50</td>
-<td style="text-align:right">90</td>
-<td style="text-align:right">M</td>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">100</td>
+<td align="right">Taipei</td>
+<td align="right">1990</td>
+<td align="right">Sally</td>
+<td align="right">50</td>
+<td align="right">90</td>
+<td align="right">M</td>
 </tr>
 <tr>
-<td style="text-align:right">1</td>
-<td style="text-align:right">101</td>
-<td style="text-align:right">Taipei</td>
-<td style="text-align:right">1989</td>
-<td style="text-align:right">Hanks</td>
-<td style="text-align:right">43</td>
-<td style="text-align:right">30</td>
-<td style="text-align:right">F</td>
+<td align="right">1</td>
+<td align="right">101</td>
+<td align="right">Taipei</td>
+<td align="right">1989</td>
+<td align="right">Hanks</td>
+<td align="right">43</td>
+<td align="right">30</td>
+<td align="right">F</td>
 </tr>
 <tr>
-<td style="text-align:right">2</td>
-<td style="text-align:right">102</td>
-<td style="text-align:right">Hsinchu</td>
-<td style="text-align:right">1992</td>
-<td style="text-align:right">Hannah</td>
-<td style="text-align:right">33</td>
-<td style="text-align:right">20</td>
-<td style="text-align:right">F</td>
+<td align="right">2</td>
+<td align="right">102</td>
+<td align="right">Hsinchu</td>
+<td align="right">1992</td>
+<td align="right">Hannah</td>
+<td align="right">33</td>
+<td align="right">20</td>
+<td align="right">F</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li>將 attri_data_frame1 與 attri_data_frame2 結合</li>
 <li>此兩個DataFrame的共同欄位是ID</li>
@@ -550,85 +524,197 @@ gtag('config', 'G-472VR63SXM');
 <li>使用groupby便能以某個特定的行為為基準進行統計。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#將「Sex」的行設為基準來計算出數學成績的平均分數</span></span><br><span class="line"><span class="built_in">print</span>(attri_data_frame2.groupby(<span class="string">&#x27;Sex&#x27;</span>)[<span class="string">&#x27;Math&#x27;</span>].mean())</span><br><span class="line"><span class="comment">#將「Sex」的行設為基準來計算出英文成績的最大值與最小值。</span></span><br><span class="line"><span class="built_in">print</span>(attri_data_frame2.groupby(<span class="string">&#x27;Sex&#x27;</span>)[<span class="string">&#x27;English&#x27;</span>].<span class="built_in">max</span>())</span><br><span class="line"><span class="built_in">print</span>(attri_data_frame2.groupby(<span class="string">&#x27;Sex&#x27;</span>)[<span class="string">&#x27;English&#x27;</span>].<span class="built_in">min</span>())</span><br></pre></td></tr></table></figure>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Sex</th>
-<th style="text-align:left"></th>
+<th align="left">Sex</th>
+<th align="left"></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">F</td>
-<td style="text-align:left">38.000000</td>
+<tbody><tr>
+<td align="left">F</td>
+<td align="left">38.000000</td>
 </tr>
 <tr>
-<td style="text-align:left">M</td>
-<td style="text-align:left">74.666667</td>
+<td align="left">M</td>
+<td align="left">74.666667</td>
 </tr>
 <tr>
-<td style="text-align:left">Name: Math</td>
-<td style="text-align:left">dtype: float64</td>
+<td align="left">Name: Math</td>
+<td align="left">dtype: float64</td>
 </tr>
-</tbody>
-</table>
-</div>
-<div class="table-container">
+</tbody></table>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Sex</th>
-<th style="text-align:left"></th>
+<th align="left">Sex</th>
+<th align="left"></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">F</td>
-<td style="text-align:left">30</td>
+<tbody><tr>
+<td align="left">F</td>
+<td align="left">30</td>
 </tr>
 <tr>
-<td style="text-align:left">M</td>
-<td style="text-align:left">90</td>
+<td align="left">M</td>
+<td align="left">90</td>
 </tr>
 <tr>
-<td style="text-align:left">Name: English</td>
-<td style="text-align:left">dtype: int64</td>
+<td align="left">Name: English</td>
+<td align="left">dtype: int64</td>
 </tr>
-</tbody>
-</table>
-</div>
-<div class="table-container">
+</tbody></table>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Sex</th>
-<th style="text-align:left"></th>
+<th align="left">Sex</th>
+<th align="left"></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">F</td>
-<td style="text-align:left">20</td>
+<tbody><tr>
+<td align="left">F</td>
+<td align="left">20</td>
 </tr>
 <tr>
-<td style="text-align:left">M</td>
-<td style="text-align:left">30</td>
+<td align="left">M</td>
+<td align="left">30</td>
 </tr>
 <tr>
-<td style="text-align:left">Name: English</td>
-<td style="text-align:left">dtype: int64</td>
+<td align="left">Name: English</td>
+<td align="left">dtype: int64</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#準備資料</span></span><br><span class="line">attri_data2 = &#123;<span class="string">&#x27;ID&#x27;</span>:[<span class="string">&#x27;100&#x27;</span>,<span class="string">&#x27;101&#x27;</span>,<span class="string">&#x27;102&#x27;</span>,<span class="string">&#x27;103&#x27;</span>,<span class="string">&#x27;104&#x27;</span>],</span><br><span class="line">               <span class="string">&#x27;City&#x27;</span>:[<span class="string">&#x27;Taipei&#x27;</span>,<span class="string">&#x27;Taipei&#x27;</span>,<span class="string">&#x27;Hsinchu&#x27;</span>,<span class="string">&#x27;Tainan&#x27;</span>,<span class="string">&#x27;Kaohsiung&#x27;</span>],</span><br><span class="line">               <span class="string">&#x27;Birth_year&#x27;</span>:[<span class="number">1990</span>,<span class="number">1989</span>,<span class="number">1992</span>,<span class="number">1997</span>,<span class="number">1982</span>],</span><br><span class="line">               <span class="string">&#x27;Name&#x27;</span>:[<span class="string">&#x27;Sally&#x27;</span>,<span class="string">&#x27;Hanks&#x27;</span>,<span class="string">&#x27;Hannah&#x27;</span>,<span class="string">&#x27;Kitty&#x27;</span>,<span class="string">&#x27;Steve&#x27;</span>]&#125;</span><br><span class="line">attri_data_frame_index2 = DataFrame(attri_data2,index=[<span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;c&#x27;</span>])</span><br><span class="line">attri_data_frame_index2</span><br><span class="line"></span><br><span class="line"><span class="comment">#sort by index</span></span><br><span class="line">attri_data_frame_index2.sort_index()</span><br><span class="line"></span><br><span class="line"><span class="comment">#sort by values</span></span><br><span class="line">attri_data_frame_index2.Birth_year.sort_values()</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>原始資料<br>|Index     |  ID  |   City  |  Birth_year  |  Name  |<br>|—:|—:|—:|—:|—:|<br>|e|100|Taipei|1990|Sally|<br>|b|101|Taipei|1989|Hanks|<br>|a|102|Hsinchu|1992|Hannah|<br>|d|103|Tainan|1997|Kitty|<br>|c|104|Kaohsiung|1982|Steve|</p>
+<li><p>原始資料</p>
+<table>
+<thead>
+<tr>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">City</th>
+<th align="right">Birth_year</th>
+<th align="right">Name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">e</td>
+<td align="right">100</td>
+<td align="right">Taipei</td>
+<td align="right">1990</td>
+<td align="right">Sally</td>
+</tr>
+<tr>
+<td align="right">b</td>
+<td align="right">101</td>
+<td align="right">Taipei</td>
+<td align="right">1989</td>
+<td align="right">Hanks</td>
+</tr>
+<tr>
+<td align="right">a</td>
+<td align="right">102</td>
+<td align="right">Hsinchu</td>
+<td align="right">1992</td>
+<td align="right">Hannah</td>
+</tr>
+<tr>
+<td align="right">d</td>
+<td align="right">103</td>
+<td align="right">Tainan</td>
+<td align="right">1997</td>
+<td align="right">Kitty</td>
+</tr>
+<tr>
+<td align="right">c</td>
+<td align="right">104</td>
+<td align="right">Kaohsiung</td>
+<td align="right">1982</td>
+<td align="right">Steve</td>
+</tr>
+</tbody></table>
 </li>
-<li><p>針對索引值排序<br>|Index     |  ID  |   City  |  Birth_year  |  Name  |<br>|—:|—:|—:|—:|—:|<br>|a|102|Hsinchu|1992|Hannah|<br>|b|101|Taipei|1989|Hanks|<br>|c|104|Kaohsiung|1982|Steve|<br>|d|103|Tainan|1997|Kitty|<br>|e|100|Taipei|1990|Sally|</p>
+<li><p>針對索引值排序</p>
+<table>
+<thead>
+<tr>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">City</th>
+<th align="right">Birth_year</th>
+<th align="right">Name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">a</td>
+<td align="right">102</td>
+<td align="right">Hsinchu</td>
+<td align="right">1992</td>
+<td align="right">Hannah</td>
+</tr>
+<tr>
+<td align="right">b</td>
+<td align="right">101</td>
+<td align="right">Taipei</td>
+<td align="right">1989</td>
+<td align="right">Hanks</td>
+</tr>
+<tr>
+<td align="right">c</td>
+<td align="right">104</td>
+<td align="right">Kaohsiung</td>
+<td align="right">1982</td>
+<td align="right">Steve</td>
+</tr>
+<tr>
+<td align="right">d</td>
+<td align="right">103</td>
+<td align="right">Tainan</td>
+<td align="right">1997</td>
+<td align="right">Kitty</td>
+</tr>
+<tr>
+<td align="right">e</td>
+<td align="right">100</td>
+<td align="right">Taipei</td>
+<td align="right">1990</td>
+<td align="right">Sally</td>
+</tr>
+</tbody></table>
 </li>
-<li><p>針對某特定值排序(以Birth_year)<br>|Index     | Birth_year  |<br>|:—|:—|<br>|c|1982|<br>|b|1989|<br>|e|1990|<br>|a|1992|<br>|d|1997|<br>|Name: Birth_year|dtype: int64|</p>
+<li><p>針對某特定值排序(以Birth_year)</p>
+<table>
+<thead>
+<tr>
+<th align="left">Index</th>
+<th align="left">Birth_year</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">c</td>
+<td align="left">1982</td>
+</tr>
+<tr>
+<td align="left">b</td>
+<td align="left">1989</td>
+</tr>
+<tr>
+<td align="left">e</td>
+<td align="left">1990</td>
+</tr>
+<tr>
+<td align="left">a</td>
+<td align="left">1992</td>
+</tr>
+<tr>
+<td align="left">d</td>
+<td align="left">1997</td>
+</tr>
+<tr>
+<td align="left">Name: Birth_year</td>
+<td align="left">dtype: int64</td>
+</tr>
+</tbody></table>
 </li>
 </ul>
 <h3 id="nan-null-的判斷"><a href="#nan-null-的判斷" class="headerlink" title="nan(null)的判斷"></a>nan(null)的判斷</h3><ul>
@@ -640,111 +726,131 @@ gtag('config', 'G-472VR63SXM');
 <ul>
 <li>步驟1</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Index</th>
-<th style="text-align:right">ID</th>
-<th style="text-align:right">City</th>
-<th style="text-align:right">Birth_year</th>
-<th style="text-align:right">Name</th>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">City</th>
+<th align="right">Birth_year</th>
+<th align="right">Name</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">e</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">True</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
+<tbody><tr>
+<td align="right">e</td>
+<td align="right">False</td>
+<td align="right">True</td>
+<td align="right">False</td>
+<td align="right">False</td>
 </tr>
 <tr>
-<td style="text-align:right">b</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">True</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
+<td align="right">b</td>
+<td align="right">False</td>
+<td align="right">True</td>
+<td align="right">False</td>
+<td align="right">False</td>
 </tr>
 <tr>
-<td style="text-align:right">a</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
+<td align="right">a</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
 </tr>
 <tr>
-<td style="text-align:right">d</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
+<td align="right">d</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
 </tr>
 <tr>
-<td style="text-align:right">c</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
+<td align="right">c</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li>步驟2</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Index</th>
-<th style="text-align:right">ID</th>
-<th style="text-align:right">City</th>
-<th style="text-align:right">Birth_year</th>
-<th style="text-align:right">Name</th>
+<th align="right">Index</th>
+<th align="right">ID</th>
+<th align="right">City</th>
+<th align="right">Birth_year</th>
+<th align="right">Name</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">e</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">True</td>
+<tbody><tr>
+<td align="right">e</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">True</td>
 </tr>
 <tr>
-<td style="text-align:right">b</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">True</td>
+<td align="right">b</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">True</td>
 </tr>
 <tr>
-<td style="text-align:right">a</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">True</td>
+<td align="right">a</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">True</td>
 </tr>
 <tr>
-<td style="text-align:right">d</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">True</td>
+<td align="right">d</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">True</td>
 </tr>
 <tr>
-<td style="text-align:right">c</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">False</td>
-<td style="text-align:right">True</td>
+<td align="right">c</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">True</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
-<li>步驟3<br>| | |<br>|:—|:—|<br>|ID|0|<br>|City|0|<br>|Birth_year|0|<br>|Name|5|<br>|dtype:int64|</li>
+<li>步驟3<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ID</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">City</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">Birth_year</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">Name</td>
+<td align="left">5</td>
+</tr>
+<tr>
+<td align="left">dtype:int64</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+</li>
 </ul>
 </article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">larry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://www.lalilaza.org/larry891001/2022/03/27/ML/pandas/">https://www.lalilaza.org/larry891001/2022/03/27/ML/pandas/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/larry891001/tags/Machine-Learning/">Machine Learning</a><a class="post-meta__tags" href="/larry891001/tags/lesson-note/">lesson note</a><a class="post-meta__tags" href="/larry891001/tags/Data-preprocessing/">Data preprocessing</a><a class="post-meta__tags" href="/larry891001/tags/Pandas/">Pandas</a></div><div class="post_share"><div class="social-share" data-image="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/larry891001/2022/04/08/ML/regression/"><img class="prev-cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" onerror="onerror=null;src='/larry891001/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Regression</div></div></a></div><div class="next-post pull-right"><a href="/larry891001/2022/03/25/ML/numpy/"><img class="next-cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" onerror="onerror=null;src='/larry891001/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Numpy</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/larry891001/2022/03/25/ML/datapreprocessing/" title="資料前處理"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-25</div><div class="title">資料前處理</div></div></a></div><div><a href="/larry891001/2022/03/25/ML/numpy/" title="Numpy"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-25</div><div class="title">Numpy</div></div></a></div><div><a href="/larry891001/2022/04/09/ML/BasicMLmodel/" title="Basic Machine Learning Model"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-09</div><div class="title">Basic Machine Learning Model</div></div></a></div><div><a href="/larry891001/2022/05/25/ML/CNN/" title="卷積神經網路(Convolutional neural network, CNN)"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-25</div><div class="title">卷積神經網路(Convolutional neural network, CNN)</div></div></a></div><div><a href="/larry891001/2022/04/09/ML/Confusion/" title="Confusion Matrix"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-09</div><div class="title">Confusion Matrix</div></div></a></div><div><a href="/larry891001/2022/05/28/ML/NLP/" title="自然語言處理(NLP)"><img class="cover" src="https://static.coderbridge.com/img/happycoder/images/data-science101/intro/machine_learning.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-28</div><div class="title">自然語言處理(NLP)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="fb-comments" data-colorscheme="light" data-numposts="10" data-order-by="social" data-width="100%"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://img.ruten.com.tw/s1/d/5a/27/21644218247719_383.jpg" onerror="this.onerror=null;this.src='/larry891001/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">larry</div><div class="author-info__description">人間失格-太宰治</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/larry891001/archives/"><div class="headline">Articles</div><div class="length-num">61</div></a></div><div class="card-info-data-item is-center"><a href="/larry891001/tags/"><div class="headline">Tags</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/larry891001/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/larry3425527"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pandas%E7%9A%84%E5%9F%BA%E7%A4%8E"><span class="toc-number">1.</span> <span class="toc-text">Pandas的基礎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pandas%E5%87%BD%E5%BC%8F%E5%BA%AB%E7%9A%84%E5%8C%AF%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">Pandas函式庫的匯入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Series"><span class="toc-number">3.</span> <span class="toc-text">Series</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DataFrame"><span class="toc-number">4.</span> <span class="toc-text">DataFrame</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AA%E5%8F%96%E5%87%BA%E7%89%B9%E5%AE%9A%E8%A1%8C-amp-%E8%B3%87%E6%96%99%E9%81%8E%E6%BF%BE"><span class="toc-number">4.1.</span> <span class="toc-text">只取出特定行&amp;資料過濾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame%E4%B8%AD%E8%A1%8C%E5%88%97%E7%9A%84%E5%88%AA%E9%99%A4"><span class="toc-number">4.2.</span> <span class="toc-text">DataFrame中行列的刪除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame%E8%B3%87%E6%96%99%E7%9A%84%E7%B5%90%E5%90%88"><span class="toc-number">4.3.</span> <span class="toc-text">DataFrame資料的結合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B5%B1%E8%A8%88"><span class="toc-number">4.4.</span> <span class="toc-text">統計</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nan-null-%E7%9A%84%E5%88%A4%E6%96%B7"><span class="toc-number">5.1.</span> <span class="toc-text">nan(null)的判斷</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/08/03/%E9%9B%9C7%E9%9B%9C8/SwaggerUI/" title="Swagger介紹-Django API文件生成"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Swagger-logo.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="Swagger介紹-Django API文件生成"/></a><div class="content"><a class="title" href="/larry891001/2022/08/03/%E9%9B%9C7%E9%9B%9C8/SwaggerUI/" title="Swagger介紹-Django API文件生成">Swagger介紹-Django API文件生成</a><time datetime="2022-08-03T14:01:36.668Z" title="Created 2022-08-03 06:01:36">2022-08-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/07/29/docker/docker_yolo/" title="Docker學習紀錄-在Docker中使用darknet並與python串接"><img src="https://d1.awsstatic.com/acs/characters/Logos/Docker-Logo_Horizontel_279x131.b8a5c41e56b77706656d61080f6a0217a3ba356d.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="Docker學習紀錄-在Docker中使用darknet並與python串接"/></a><div class="content"><a class="title" href="/larry891001/2022/07/29/docker/docker_yolo/" title="Docker學習紀錄-在Docker中使用darknet並與python串接">Docker學習紀錄-在Docker中使用darknet並與python串接</a><time datetime="2022-07-29T13:20:41.119Z" title="Created 2022-07-29 05:20:41">2022-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/07/27/docker/docker_cuda/" title="Docker學習紀錄-在Docker中建立 nvidia/cuda image"><img src="https://d1.awsstatic.com/acs/characters/Logos/Docker-Logo_Horizontel_279x131.b8a5c41e56b77706656d61080f6a0217a3ba356d.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="Docker學習紀錄-在Docker中建立 nvidia/cuda image"/></a><div class="content"><a class="title" href="/larry891001/2022/07/27/docker/docker_cuda/" title="Docker學習紀錄-在Docker中建立 nvidia/cuda image">Docker學習紀錄-在Docker中建立 nvidia/cuda image</a><time datetime="2022-07-28T02:38:50.629Z" title="Created 2022-07-27 18:38:50">2022-07-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/07/10/LeetCode/easy/746/" title="LeetCode -746. Min Cost Climbing Stairs解題紀錄"><img src="https://miro.medium.com/max/1200/1*Lur9rrJITsFRnuIYURYkSg.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="LeetCode -746. Min Cost Climbing Stairs解題紀錄"/></a><div class="content"><a class="title" href="/larry891001/2022/07/10/LeetCode/easy/746/" title="LeetCode -746. Min Cost Climbing Stairs解題紀錄">LeetCode -746. Min Cost Climbing Stairs解題紀錄</a><time datetime="2022-07-10T10:24:58.955Z" title="Created 2022-07-10 02:24:58">2022-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/larry891001/2022/07/08/LeetCode/Mid/712/" title="LeetCode -712. Minimum ASCII Delete Sum for Two Strings解題紀錄"><img src="https://miro.medium.com/max/1200/1*Lur9rrJITsFRnuIYURYkSg.png" onerror="this.onerror=null;this.src='/larry891001/img/404.jpg'" alt="LeetCode -712. Minimum ASCII Delete Sum for Two Strings解題紀錄"/></a><div class="content"><a class="title" href="/larry891001/2022/07/08/LeetCode/Mid/712/" title="LeetCode -712. Minimum ASCII Delete Sum for Two Strings解題紀錄">LeetCode -712. Minimum ASCII Delete Sum for Two Strings解題紀錄</a><time datetime="2022-07-08T13:41:48.006Z" title="Created 2022-07-08 05:41:48">2022-07-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By larry</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/larry891001/js/utils.js"></script><script src="/larry891001/js/main.js"></script><script src="/larry891001/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
