@@ -608,14 +608,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Confusion-Matrix/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/CNN/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/CNN/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/Confusion-Matrix/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -657,14 +657,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/Pandas/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/numpy/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/numpy/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/Pandas/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -699,14 +699,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/python/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/cuda/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/cuda/</loc>
+    <loc>https://www.lalilaza.org/larry891001/tags/python/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -734,13 +734,6 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/tags/LeetCode/</loc>
-    <lastmod>2022-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lalilaza.org/larry891001/tags/API/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -749,6 +742,13 @@
   
   <url>
     <loc>https://www.lalilaza.org/larry891001/tags/Swagger/</loc>
+    <lastmod>2022-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lalilaza.org/larry891001/tags/LeetCode/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -806,14 +806,14 @@
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/LeetCode/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/%E9%9B%9C7%E9%9B%9C8/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lalilaza.org/larry891001/categories/%E9%9B%9C7%E9%9B%9C8/</loc>
+    <loc>https://www.lalilaza.org/larry891001/categories/LeetCode/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
